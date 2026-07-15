@@ -121,7 +121,7 @@
 .angle,
 .approach,
 .related {
-  background: var(--service-surface);
+  background: var(--service-bg);
 }
 
 .angle,

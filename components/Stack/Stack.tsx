@@ -17,7 +17,8 @@ export function Stack() {
             <span className={styles.label}>Stack</span>
 
             <h2 className={styles.heading}>
-              Tools I use to build, structure and ship web projects<span>.</span>
+              Tools I use to build, structure and ship web <span>projects</span>
+              <span>.</span>
             </h2>
           </div>
 

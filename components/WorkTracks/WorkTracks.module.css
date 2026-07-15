@@ -52,11 +52,11 @@
 }
 
 .title span {
-  color: var(--color-orange);
+  color: var(--color-sky);
 }
 
 .title b {
-  color: var(--color-orange);
+  color: var(--color-sky);
   font-weight: inherit;
 }
 

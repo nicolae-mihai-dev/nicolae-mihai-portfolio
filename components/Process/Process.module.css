@@ -51,7 +51,7 @@
 .title span {
   position: relative;
   display: inline-block;
-  color: var(--yellow);
+  color: var(--cyan);
 }
 
 .title span::after {
@@ -60,7 +60,7 @@
   bottom: -0.8rem;
   left: 0;
   height: 0.5rem;
-  background: var(--yellow);
+  background: var(--cyan);
   content: "";
 }
 
