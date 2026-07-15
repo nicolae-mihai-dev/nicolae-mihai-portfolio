@@ -11,9 +11,7 @@ export function CaseStudyFormat() {
           <span className={styles.label}>Case studies</span>
 
           <h2 className={styles.title}>
-            Not just screenshots.
-            <br />
-            Each project explains <span>the build.</span>
+            Not just screenshots. Each project explains <span>the build.</span>
           </h2>
 
           <p className={styles.description}>

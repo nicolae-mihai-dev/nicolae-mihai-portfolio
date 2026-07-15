@@ -11,15 +11,7 @@ export function Contact() {
           <span className={styles.label}>Contact</span>
 
           <h2>
-            Have a
-            <br />
-            website,
-            <br />
-            landing page or
-            <br />
-            CMS build
-            <br />
-            in mind?
+            Have a website, landing page or CMS build in mind?
           </h2>
         </div>
 

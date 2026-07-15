@@ -1,7 +1,7 @@
 .stack {
   overflow: hidden;
   color: var(--text-primary);
-  background: var(--surface);
+  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
   scroll-margin-top: var(--scroll-offset);
 }
@@ -39,7 +39,7 @@
 }
 
 .heading {
-  max-width: 72rem;
+  max-width: 70rem;
   margin: 0;
   color: var(--text-primary);
   font-size: var(--section-title);
@@ -78,7 +78,7 @@
   padding: 5rem 3.4rem 3.8rem;
   overflow: hidden;
   color: var(--text-primary);
-  background: var(--background);
+  background: var(--surface);
   border-radius: 2rem;
   isolation: isolate;
   transition:
@@ -142,7 +142,7 @@
 }
 
 .card:hover {
-  background: var(--background);
+  background: var(--surface-hover);
   flex-grow: 1.2;
   transform: translateY(-0.5rem);
 }

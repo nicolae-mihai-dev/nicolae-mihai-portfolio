@@ -1,14 +1,9 @@
 .about {
-  --about-bg: var(--section-light);
-  --about-ink: var(--section-light-ink);
-  --about-muted: var(--section-light-muted);
-  --about-border: var(--section-light-border);
-
   position: relative;
   overflow: hidden;
-  color: var(--about-ink);
-  background: var(--about-bg);
-  border-top: 1px solid var(--about-border);
+  color: var(--text-primary);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
   scroll-margin-top: var(--scroll-offset);
 }
 
@@ -23,7 +18,7 @@
 .details {
   position: relative;
   padding: 3.8rem 6.4rem 2rem 0;
-  border-right: 1px solid var(--about-border);
+  border-right: 1px solid var(--border-strong);
 }
 
 .detailList {
@@ -36,7 +31,7 @@
   position: relative;
   margin: 0 0 2.6rem;
   padding: 0 0 2.8rem;
-  border-bottom: 1px solid var(--about-border);
+  border-bottom: 1px solid var(--border);
 }
 
 .detail:last-child {
@@ -82,7 +77,7 @@
 
 .detail dd {
   margin: 0;
-  color: var(--about-ink);
+  color: var(--text-primary);
   font-size: 1.8rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.35;
@@ -134,7 +129,7 @@
 .title {
   max-width: 99rem;
   margin: 0 0 4.6rem;
-  color: var(--about-ink);
+  color: var(--text-primary);
   font-size: var(--section-title);
   font-weight: var(--font-weight-heavy);
   letter-spacing: 0;
@@ -161,7 +156,7 @@
 
 .copy p {
   margin: 0 0 2.4rem;
-  color: var(--about-ink);
+  color: var(--text-primary);
   font-size: 1.8rem;
   font-weight: var(--font-weight-regular);
   line-height: 1.48;
@@ -181,7 +176,7 @@
     order: 2;
     padding: 0 0 4.8rem;
     border-right: 0;
-    border-bottom: 1px solid var(--about-border);
+    border-bottom: 1px solid var(--border-strong);
   }
 
   .detailList {
@@ -214,7 +209,7 @@
   .detail:nth-last-child(-n + 2) {
     margin-bottom: 2.4rem;
     padding-bottom: 2.4rem;
-    border-bottom: 1px solid var(--about-border);
+    border-bottom: 1px solid var(--border);
   }
 
   .detail:last-child {

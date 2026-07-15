@@ -46,13 +46,7 @@ export function Process() {
             <span className={styles.label}>Process</span>
 
             <h2 className={styles.title}>
-              A clear path
-              <br />
-              from idea
-              <br />
-              to a <span>working</span>
-              <br />
-              website.
+              A clear path from idea to a <span>working</span> website.
             </h2>
           </div>
 

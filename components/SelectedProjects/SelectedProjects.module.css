@@ -1,7 +1,7 @@
 .projects {
   padding-block: 12rem;
   color: var(--text-primary);
-  background: var(--surface);
+  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
   scroll-margin-top: var(--scroll-offset);
 }

@@ -41,7 +41,7 @@
 }
 
 .title {
-  max-width: 65rem;
+  max-width: 68rem;
   margin-inline: auto;
   color: var(--text-primary);
   font-size: var(--section-title);

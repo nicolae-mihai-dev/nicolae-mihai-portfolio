@@ -3,22 +3,12 @@ import styles from "./WorkTracks.module.css";
 const tracks = [
   {
     variant: "frontend" as const,
-    title: (
-      <>
-        Front-end &<br />
-        product-style builds
-      </>
-    ),
+    title: <>Front-end &amp; product-style builds</>,
     technologies: ["React", "Next.js", "TypeScript", "Responsive UI"],
   },
   {
     variant: "cms" as const,
-    title: (
-      <>
-        CMS &<br />
-        marketing websites
-      </>
-    ),
+    title: <>CMS &amp; marketing websites</>,
     technologies: ["WordPress", "ACF", "HubSpot CMS", "WooCommerce"],
   },
 ];
@@ -36,9 +26,7 @@ export function WorkTracks() {
           <span className={styles.label}>Two tracks</span>
 
           <h2 className={styles.title}>
-            Modern front-end
-            <br />
-            meets <span>practical CMS</span>
+            Modern front-end meets <span>practical CMS</span>
             <b>.</b>
           </h2>
 
