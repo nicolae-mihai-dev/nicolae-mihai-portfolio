@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   color: var(--text-primary);
-  background: var(--surface);
+  background: var(--color-bg);
   border-top: 1px solid var(--border);
   scroll-margin-top: var(--scroll-offset);
 }
