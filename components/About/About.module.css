@@ -1,0 +1,239 @@
+.about {
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  scroll-margin-top: var(--scroll-offset);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(23rem, 0.34fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(6rem, 7vw, 11rem);
+  padding-block: 12rem 13rem;
+}
+
+.details {
+  position: relative;
+  padding: 3.8rem 6.4rem 2rem 0;
+  border-right: 1px solid var(--border-strong);
+}
+
+.detailList {
+  margin: 0;
+}
+
+.detail {
+  --about-accent: var(--yellow);
+
+  position: relative;
+  margin: 0 0 2.6rem;
+  padding: 0 0 2.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.detail::before {
+  display: block;
+  width: 4.8rem;
+  height: 0.4rem;
+  margin-bottom: 1.8rem;
+  background: var(--about-accent);
+  border-radius: 999px;
+  content: "";
+}
+
+.yellow {
+  --about-accent: var(--yellow);
+}
+
+.cyan {
+  --about-accent: var(--cyan);
+}
+
+.pink {
+  --about-accent: var(--pink);
+}
+
+.purple {
+  --about-accent: #7f45ce;
+}
+
+.detail dt {
+  margin: 0 0 1.2rem;
+  color: var(--about-accent);
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.detail dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.35;
+}
+
+.detail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  transition: color var(--transition-hover);
+}
+
+.detail a span:last-child {
+  flex: 0 0 auto;
+  color: var(--about-accent);
+  font-size: 2.2rem;
+  transition: transform var(--transition-hover);
+}
+
+.detail a:hover {
+  color: var(--about-accent);
+}
+
+.detail a:hover span:last-child {
+  transform: translate(0.3rem, -0.3rem);
+}
+
+.content {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 3.2rem;
+  color: var(--yellow);
+  font-size: 2.4rem;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 99rem;
+  margin: 0 0 4.6rem;
+  color: var(--text-primary);
+  font-size: clamp(5.4rem, 5.2vw, 8.4rem);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+  line-height: 0.87;
+  text-transform: uppercase;
+}
+
+.title span {
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0.3rem 1rem 0.7rem;
+  color: var(--background);
+  background: var(--yellow);
+}
+
+.title b {
+  color: var(--yellow);
+  font-weight: inherit;
+}
+
+.copy {
+  max-width: 91rem;
+}
+
+.copy p {
+  margin: 0 0 2.4rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.48;
+}
+
+.copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 100rem) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 6rem;
+  }
+
+  .details {
+    order: 2;
+    padding: 0 0 4.8rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .detailList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 4.2rem;
+  }
+
+  .detail {
+    margin: 0;
+  }
+
+  .detail:nth-last-child(-n + 2) {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 62rem) {
+  .layout {
+    padding-block: 8rem;
+  }
+
+  .detailList {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .detail,
+  .detail:nth-last-child(-n + 2) {
+    margin-bottom: 2.4rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .detail:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .label {
+    margin-bottom: 2.4rem;
+    font-size: 2rem;
+  }
+
+  .title {
+    margin-bottom: 3.4rem;
+    font-size: clamp(4rem, 10vw, 5.8rem);
+  }
+
+  .title span {
+    padding-inline: 0.7rem;
+  }
+
+  .copy p {
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+  }
+}

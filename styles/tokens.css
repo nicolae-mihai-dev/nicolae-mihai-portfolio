@@ -1,0 +1,80 @@
+:root {
+  --font-sans: "Barlow Semi Condensed", Arial, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 900;
+  --font-weight-logo: 800;
+
+  --text-xs: 1.4rem;
+  --text-sm: 1.6rem;
+  --text-md: 1.6rem;
+  --text-lg: 1.7rem;
+  --text-xl: clamp(2.4rem, 2.8vw, 2.8rem);
+
+  --heading-md: clamp(2.4rem, 2.6vw, 2.8rem);
+  --heading-lg: clamp(3.8rem, 4.8vw, 5.9rem);
+  --heading-xl: clamp(4.4rem, 5.9vw, 5.9rem);
+  --display-hero: clamp(4.4rem, 6vw, 7.2rem);
+
+  --background: #111015;
+  --surface: #2f2e33;
+  --surface-hover: #38373d;
+  --surface-raised: #38373d;
+  --text-primary: #e6e6e6;
+  --text-secondary: #e6e6e6;
+  --text-muted: rgba(230, 230, 230, 0.72);
+  --yellow: #ffe900;
+  --yellow-hover: #e0cc00;
+  --cyan: #02d0a7;
+  --pink: #ff42b7;
+  --pink-hover: #d9369a;
+  --purple: #43288a;
+  --warm-light: #2f2e33;
+  --gray-light: #38373d;
+  --border: rgba(230, 230, 230, 0.12);
+  --border-strong: rgba(230, 230, 230, 0.22);
+  --shadow: rgba(0, 0, 0, 0.24);
+  --transition-hover: 180ms ease;
+
+  --color-sky: var(--cyan);
+  --color-coral: var(--yellow);
+  --color-orange: var(--yellow);
+  --color-orange-hover: var(--yellow-hover);
+  --color-pink: var(--pink);
+  --color-pink-hover: var(--pink-hover);
+  --color-ivory: var(--background);
+
+  --color-bg: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-text: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-border: var(--border);
+
+  --color-dark: var(--background);
+  --color-dark-text: var(--text-primary);
+
+  --container: 136rem;
+  --hero-container: var(--container);
+  --container-pad: clamp(1.6rem, 3vw, 3.2rem);
+  --section-pad: clamp(7.2rem, 10vw, 12.8rem);
+  --section-pad-mobile: clamp(6.4rem, 14vw, 8.8rem);
+  --space-section-rule: clamp(1.9rem, 3vw, 2.9rem);
+  --space-section-heading: clamp(4.8rem, 7vw, 8rem);
+  --space-label-title: clamp(2.9rem, 4vw, 4.8rem);
+  --space-title-copy: 2rem;
+  --space-paragraph: 1.6rem;
+  --space-card-heading: clamp(4rem, 6vw, 7.2rem);
+  --space-card-copy: 1.6rem;
+  --space-actions: 2.6rem;
+  --site-header-height: 0;
+  --hero-next-section-peek: var(--site-header-height);
+  --scroll-offset: calc(var(--site-header-height) + 1.6rem);
+
+  --radius-sm: 2rem;
+  --radius-md: 2rem;
+  --radius-lg: 2rem;
+
+  --shadow-line: 0 1px 0 rgba(230, 230, 230, 0.08);
+}

@@ -1,0 +1,345 @@
+.process {
+  overflow: hidden;
+  color: var(--text-primary);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: var(--scroll-offset);
+}
+
+.inner {
+  padding-block: 12rem 14rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(32rem, 0.55fr);
+  align-items: end;
+  gap: 8rem;
+  max-width: 108rem;
+  margin-bottom: 7rem;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 3.2rem;
+  padding: 0.8rem 2rem;
+  color: var(--pink);
+  background: var(--cyan);
+  border-radius: 2rem;
+  font-size: 2.1rem;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label::before {
+  display: none;
+}
+
+.title {
+  max-width: 82rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(5.4rem, 5.3vw, 8.2rem);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.title span {
+  position: relative;
+  display: inline-block;
+  color: var(--yellow);
+}
+
+.title span::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.8rem;
+  left: 0;
+  height: 0.5rem;
+  background: var(--yellow);
+  content: "";
+}
+
+.intro {
+  max-width: 42rem;
+  margin: 0 0 1.2rem;
+  color: var(--text-secondary);
+  font-size: 1.9rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  --process-accent: var(--yellow);
+  --process-offset: 0%;
+  --process-text: #000000;
+  --process-number-color: rgba(0, 0, 0, 0.18);
+  --process-width: 78%;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 15rem 7.6rem minmax(0, 1fr) 4.8rem;
+  align-items: center;
+  gap: 0;
+  width: var(--process-width);
+  min-height: 14rem;
+  margin-left: var(--process-offset);
+  padding: 2.4rem 3.2rem;
+  overflow: hidden;
+  color: var(--process-text);
+  background: var(--process-accent);
+  border-radius: 2rem;
+  isolation: isolate;
+  transition:
+    width var(--transition-hover),
+    transform var(--transition-hover),
+    background-color var(--transition-hover),
+    color var(--transition-hover);
+}
+
+.item::after {
+  position: absolute;
+  z-index: -1;
+  top: -10rem;
+  right: -10rem;
+  width: 26rem;
+  height: 26rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.item:hover {
+  width: calc(var(--process-width) + 2%);
+  transform: translateX(0.6rem);
+}
+
+.yellow {
+  --process-accent: var(--yellow);
+}
+
+.cyan {
+  --process-accent: var(--cyan);
+  --process-offset: 15%;
+  --process-width: 80%;
+}
+
+.pink {
+  --process-accent: var(--pink);
+  --process-offset: 5%;
+  --process-width: 79%;
+}
+
+.purple {
+  --process-accent: var(--purple);
+  --process-number-color: rgba(255, 255, 255, 0.26);
+  --process-text: var(--text-primary);
+  --process-offset: 20%;
+  --process-width: 80%;
+}
+
+.yellowLast {
+  --process-offset: 10%;
+  --process-width: 80%;
+}
+
+.number {
+  position: relative;
+  z-index: 1;
+  color: var(--process-number-color);
+  font-size: clamp(6.8rem, 7vw, 10.8rem);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+  line-height: 0.75;
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.6rem;
+  height: 6.6rem;
+  color: var(--process-accent);
+  background: var(--color-bg);
+  border-radius: 50%;
+}
+
+.icon svg {
+  width: 3.4rem;
+  height: 3.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 65rem;
+  padding-left: 3rem;
+  border-left: 1px solid currentColor;
+}
+
+.content h3,
+.content p {
+  margin: 0;
+}
+
+.content h3 {
+  padding: 0;
+  color: currentColor;
+  font-size: clamp(2.7rem, 2.8vw, 3.6rem);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+  line-height: 0.92;
+}
+
+.content p {
+  max-width: 62rem;
+  margin-top: 0.8rem;
+  color: currentColor;
+  font-size: 1.7rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  opacity: 0.78;
+}
+
+.arrow {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  color: currentColor;
+  font-size: 3.8rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+  transition: transform var(--transition-hover);
+}
+
+.item:hover .arrow {
+  transform: translateX(0.6rem);
+}
+
+@media (max-width: 110rem) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  .intro {
+    max-width: 65rem;
+  }
+
+  .item {
+    grid-template-columns: 11rem 6.8rem minmax(0, 1fr) 3.8rem;
+    width: 90%;
+  }
+
+  .cyan,
+  .purple {
+    --process-offset: 8%;
+  }
+
+  .pink,
+  .yellowLast {
+    --process-offset: 3%;
+  }
+}
+
+@media (max-width: 70rem) {
+  .inner {
+    padding-block: 8rem;
+  }
+
+  .header {
+    margin-bottom: 5rem;
+  }
+
+  .title {
+    font-size: clamp(4rem, 10vw, 5.8rem);
+  }
+
+  .intro {
+    font-size: 1.7rem;
+  }
+
+  .list {
+    gap: 1.4rem;
+  }
+
+  .item,
+  .cyan,
+  .pink,
+  .purple,
+  .yellowLast {
+    grid-template-columns: 7.2rem minmax(0, 1fr) 3rem;
+    grid-template-areas:
+      "number icon arrow"
+      "content content content";
+    width: 100%;
+    min-height: 0;
+    margin-left: 0;
+    padding: 2.6rem 2.2rem;
+    gap: 2rem 1.4rem;
+  }
+
+  .item:hover {
+    width: 100%;
+    transform: none;
+  }
+
+  .number {
+    grid-area: number;
+    font-size: 5.8rem;
+  }
+
+  .icon {
+    grid-area: icon;
+    width: 5.4rem;
+    height: 5.4rem;
+  }
+
+  .icon svg {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .content {
+    grid-area: content;
+    max-width: none;
+    padding: 2.2rem 0 0;
+    border-top: 1px solid currentColor;
+    border-left: 0;
+  }
+
+  .content h3 {
+    font-size: 2.9rem;
+  }
+
+  .content p {
+    font-size: 1.6rem;
+  }
+
+  .arrow {
+    grid-area: arrow;
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,225 @@
+.contact {
+  position: relative;
+  overflow: hidden;
+  color: #000000;
+  background: var(--yellow);
+  border-top: 1px solid #000000;
+  scroll-margin-top: var(--scroll-offset);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(39rem, 0.88fr) minmax(52rem, 1.12fr);
+  align-items: end;
+  gap: clamp(7rem, 9vw, 15rem);
+  padding-block: 11rem 12rem;
+}
+
+.heading {
+  min-width: 0;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 3.6rem;
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label::after {
+  display: block;
+  width: 6.4rem;
+  height: 0.4rem;
+  margin-top: 1.8rem;
+  background: #000000;
+  border-radius: 999px;
+  content: "";
+}
+
+.heading h2 {
+  max-width: 72rem;
+  margin: 0;
+  color: #000000;
+  font-size: clamp(5.8rem, 5.6vw, 9rem);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0;
+  line-height: 0.84;
+  text-transform: uppercase;
+}
+
+.content {
+  min-width: 0;
+  padding-bottom: 0.8rem;
+}
+
+.content > p {
+  max-width: 56rem;
+  margin: 0 0 3.6rem;
+  color: #000000;
+  font-size: clamp(2.2rem, 2vw, 3.1rem);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.2rem;
+  width: 100%;
+  min-height: 15rem;
+  padding: 3.4rem 4.2rem;
+  color: var(--text-primary);
+  background: var(--background);
+  border-radius: 2rem;
+  font-size: clamp(2.7rem, 2.5vw, 4rem);
+  font-weight: 600;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  transition:
+    color var(--transition-hover),
+    background-color var(--transition-hover),
+    transform var(--transition-hover);
+}
+
+.email > span:last-child {
+  flex-shrink: 0;
+  color: var(--yellow);
+  font-size: 5.2rem;
+  font-weight: var(--font-weight-regular);
+  transition: transform var(--transition-hover);
+}
+
+.email:hover {
+  color: var(--yellow);
+  background: var(--surface-hover);
+  transform: translateY(-0.3rem);
+}
+
+.email:hover > span:last-child {
+  transform: translateX(0.8rem);
+}
+
+.links {
+  display: grid;
+  grid-template-columns: 0.8fr 0.9fr 1.25fr;
+  align-items: center;
+  margin-top: 3.2rem;
+}
+
+.links a,
+.links > span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.8rem;
+  gap: 1.6rem;
+  padding: 1rem 2.6rem;
+  color: #000000;
+  font-size: 1.9rem;
+  font-weight: var(--font-weight-heavy);
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition-hover);
+}
+
+.links a:not(:last-child)::after,
+.links > span:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 5.4rem;
+  background: rgba(0, 0, 0, 0.35);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.links a:hover,
+.links > span:hover {
+  color: var(--purple);
+}
+
+.links a span:last-child {
+  font-size: 3rem;
+  transition: transform var(--transition-hover);
+}
+
+.links a:hover span:last-child {
+  transform: translateX(0.6rem);
+}
+
+@media (max-width: 105rem) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 5.8rem;
+  }
+
+  .heading h2 {
+    max-width: 83rem;
+  }
+
+  .content {
+    max-width: 85rem;
+  }
+}
+
+@media (max-width: 65rem) {
+  .layout {
+    gap: 4.4rem;
+    padding-block: 7.6rem 8rem;
+  }
+
+  .label {
+    margin-bottom: 3rem;
+    font-size: 2.1rem;
+  }
+
+  .heading h2 {
+    font-size: 4.4rem;
+  }
+
+  .content > p {
+    margin-bottom: 2.6rem;
+    font-size: 2.1rem;
+  }
+
+  .email {
+    align-items: flex-start;
+    min-height: 12.8rem;
+    padding: 2.8rem 2.4rem;
+    font-size: 2.3rem;
+  }
+
+  .email > span:last-child {
+    font-size: 3.6rem;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+    margin-top: 2.2rem;
+  }
+
+  .links a,
+  .links > span {
+    justify-content: space-between;
+    min-height: 5.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .links a:not(:last-child)::after,
+  .links > span:not(:last-child)::after {
+    display: none;
+  }
+
+  .links a:last-child {
+    border-bottom: 0;
+  }
+}

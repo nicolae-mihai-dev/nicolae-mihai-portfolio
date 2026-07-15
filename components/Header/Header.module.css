@@ -1,0 +1,128 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 9rem;
+  margin: 2rem;
+  padding: 0.8rem 0;
+  color: #e6e6e6;
+  background-color: #201f24;
+  border-radius: 2rem;
+  box-shadow: 0 1.2rem 2.8rem -2.4rem rgba(0, 0, 0, 0.72);
+  transform: translateY(0);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+  will-change: transform;
+}
+
+.hidden {
+  transform: translateY(-100%);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  min-height: 7.4rem;
+}
+
+.logo {
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 2.7rem;
+  font-weight: var(--font-weight-logo);
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+  transform: translateY(-3px);
+  white-space: nowrap;
+}
+
+.accent,
+.bracket {
+  color: var(--color-orange);
+}
+
+.bracket {
+  font-size: 3.6rem;
+  transform: translateY(-2px);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.3rem, 2vw, 2.4rem);
+  min-width: 0;
+}
+
+.navLink {
+  position: relative;
+  padding-block: 0.7rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  transition: color var(--transition-hover);
+}
+
+.navLink::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.1rem;
+  background: var(--color-orange);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-hover);
+}
+
+.navLink:hover {
+  color: var(--color-orange);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 96rem) {
+  .inner {
+    grid-template-columns: 1fr auto;
+    padding-block: 1.4rem;
+  }
+
+  .nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 68rem) {
+  .inner {
+    grid-template-columns: 1fr auto;
+    gap: 1.2rem;
+    min-height: 6.4rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .inner .cta {
+    display: none;
+  }
+
+}

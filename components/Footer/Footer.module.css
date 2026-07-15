@@ -1,0 +1,146 @@
+.footer {
+  color: var(--text-primary);
+  background: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(24rem, 0.9fr) minmax(42rem, 1.35fr) minmax(23rem, 0.75fr);
+  align-items: center;
+  gap: 4.8rem;
+  min-height: 13.2rem;
+  padding-block: 2.8rem;
+}
+
+.identity {
+  min-width: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 2.7rem;
+  font-weight: var(--font-weight-logo);
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--yellow);
+}
+
+.logo .bracket {
+  font-size: 3.6rem;
+  transform: translateY(-2px);
+}
+
+.logo .dot {
+  color: var(--yellow);
+}
+
+.logo:hover {
+  color: var(--yellow);
+}
+
+.identity p,
+.legal p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation a {
+  position: relative;
+  padding: 0.4rem 1.8rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.navigation a:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 2rem;
+  background: var(--border-strong);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.navigation a:hover,
+.legal a:hover {
+  color: var(--yellow);
+}
+
+.legal {
+  justify-self: end;
+  text-align: right;
+}
+
+.legal a {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+@media (max-width: 105rem) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .navigation {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-content: flex-start;
+    order: -1;
+  }
+}
+
+@media (max-width: 65rem) {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    min-height: auto;
+    padding-block: 4.2rem;
+  }
+
+  .navigation {
+    justify-content: flex-start;
+    gap: 1.4rem 2.2rem;
+  }
+
+  .navigation a {
+    padding: 0;
+  }
+
+  .navigation a::after {
+    display: none;
+  }
+
+  .legal {
+    justify-self: auto;
+    text-align: left;
+  }
+}
