@@ -43,7 +43,7 @@
   max-width: 72rem;
   margin: 0;
   color: #000000;
-  font-size: clamp(5.8rem, 5.6vw, 9rem);
+  font-size: var(--section-title);
   font-weight: var(--font-weight-heavy);
   letter-spacing: 0;
   line-height: 0.84;
@@ -182,7 +182,7 @@
   }
 
   .heading h2 {
-    font-size: 4.4rem;
+    font-size: var(--section-title-mobile);
   }
 
   .content > p {

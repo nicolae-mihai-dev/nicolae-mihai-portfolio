@@ -44,7 +44,7 @@
   max-width: 65rem;
   margin-inline: auto;
   color: var(--text-primary);
-  font-size: clamp(4.8rem, 4vw, 6.6rem);
+  font-size: var(--section-title);
   font-weight: var(--font-weight-heavy);
   line-height: 0.88;
   text-align: center;
@@ -294,7 +294,7 @@
   }
 
   .title {
-    font-size: clamp(4.4rem, 10vw, 5.2rem);
+    font-size: var(--section-title-mobile);
   }
 
   .description {

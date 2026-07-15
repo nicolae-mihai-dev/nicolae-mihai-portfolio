@@ -1,6 +1,6 @@
 .caseStudies {
-  --process-bg: var(--text-primary);
-  --process-ink: var(--color-bg);
+  --process-bg: var(--section-light);
+  --process-ink: var(--section-light-ink);
 
   position: relative;
   overflow: hidden;
@@ -47,7 +47,7 @@
 .title {
   max-width: 97rem;
   color: var(--process-ink);
-  font-size: clamp(5.4rem, 6vw, 9.4rem);
+  font-size: var(--section-title);
   font-weight: var(--font-weight-heavy);
   line-height: 0.86;
   text-align: left;
@@ -65,7 +65,7 @@
 .description {
   max-width: 76rem;
   margin-top: 3rem;
-  color: rgba(17, 16, 21, 0.72);
+  color: var(--section-light-muted);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-regular);
   line-height: 1.45;

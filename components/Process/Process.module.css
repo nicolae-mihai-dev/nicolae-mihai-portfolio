@@ -41,7 +41,7 @@
   max-width: 82rem;
   margin: 0;
   color: var(--text-primary);
-  font-size: clamp(5.4rem, 5.3vw, 8.2rem);
+  font-size: var(--section-title);
   font-weight: var(--font-weight-heavy);
   letter-spacing: 0;
   line-height: 0.86;
@@ -274,7 +274,7 @@
   }
 
   .title {
-    font-size: clamp(4rem, 10vw, 5.8rem);
+    font-size: var(--section-title-mobile);
   }
 
   .intro {

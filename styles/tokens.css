@@ -15,6 +15,9 @@
   --heading-md: clamp(2.4rem, 2.6vw, 2.8rem);
   --heading-lg: clamp(3.8rem, 4.8vw, 5.9rem);
   --heading-xl: clamp(4.4rem, 5.9vw, 5.9rem);
+  --section-title: clamp(4.8rem, 5vw, 7.2rem);
+  --section-title-mobile: clamp(4rem, 10vw, 5.8rem);
+  --card-title: clamp(2.4rem, 2.4vw, 3.4rem);
   --display-hero: clamp(4.4rem, 6vw, 7.2rem);
 
   --background: #111015;
@@ -34,6 +37,10 @@
   --gray-light: #38373d;
   --border: rgba(230, 230, 230, 0.12);
   --border-strong: rgba(230, 230, 230, 0.22);
+  --section-light: #e6e6e6;
+  --section-light-ink: #111015;
+  --section-light-muted: rgba(17, 16, 21, 0.72);
+  --section-light-border: rgba(17, 16, 21, 0.18);
   --shadow: rgba(0, 0, 0, 0.24);
   --transition-hover: 180ms ease;
 
