@@ -33,14 +33,14 @@
 
 .primary {
   background: var(--color-brand-orange);
-  color: var(--color-white);
+  color: var(--color-heading);
   border-color: var(--color-brand-orange);
 }
 
 .primary:hover {
   background: var(--color-brand-orange-hover);
   border-color: var(--color-brand-orange-hover);
-  color: var(--color-white);
+  color: var(--color-heading);
 }
 
 .secondary {

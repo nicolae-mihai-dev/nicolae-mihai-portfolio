@@ -44,9 +44,10 @@
   --color-section: #f1f0eb;
   --color-rule: #d8d7d1;
   --color-brand-orange: #f06d2f;
+  --color-brand-orange-text: #b94a18;
   --color-brand-orange-hover: #d9571d;
   --color-contact: var(--color-project-accent-two);
-  --color-project-accent-two: #009b83;
+  --color-project-accent-two: #00816f;
   --color-project-accent-three: #5264d9;
   --container: 136rem;
   --hero-container: var(--container);

@@ -10,7 +10,7 @@
 }
 
 .type-label--accent {
-  color: var(--color-brand-orange);
+  color: var(--color-brand-orange-text);
 }
 
 .type-label--inverse {
