@@ -2,64 +2,65 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--button-width);
-  min-width: var(--button-width);
   min-height: 5.2rem;
-  padding: 1.2rem 2.4rem;
-  border: 1px solid var(--color-orange);
-  border-radius: 2rem;
+  padding: 1.3rem 2.6rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
   font-family: var(--font-sans);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0;
-  line-height: 1;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
   text-align: center;
   white-space: nowrap;
   transition:
-    background-color var(--transition-hover),
-    border-color var(--transition-hover),
-    color var(--transition-hover);
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .small {
-  --button-width: 16rem;
-
-  height: 5.2rem;
-  font-size: 1.6rem;
+  min-width: 16rem;
+  min-height: 5rem;
+  font-size: var(--text-md);
 }
 
 .medium {
-  --button-width: 20rem;
-
-  height: 5.2rem;
-  font-size: 1.6rem;
+  min-width: 18rem;
+  min-height: 5.2rem;
+  font-size: var(--text-md);
 }
 
 .primary {
-  background: var(--color-orange);
-  color: #000000;
-  border-color: var(--color-orange);
+  background: var(--color-brand-orange);
+  color: var(--color-white);
+  border-color: var(--color-brand-orange);
 }
 
 .primary:hover {
-  background: var(--color-orange-hover);
-  color: #000000;
-  border-color: var(--color-orange-hover);
+  background: var(--color-brand-orange-hover);
+  border-color: var(--color-brand-orange-hover);
+  color: var(--color-white);
 }
 
 .secondary {
-  background: var(--color-pink);
-  color: #000000;
-  border-color: var(--color-pink);
+  background: transparent;
+  color: var(--color-heading);
+  border-color: var(--color-rule);
 }
 
 .secondary:hover {
-  background: var(--color-pink-hover);
-  color: #000000;
-  border-color: var(--color-pink-hover);
+  background: var(--color-heading);
+  color: var(--color-white);
+  border-color: var(--color-heading);
 }
 
 .plain {
   background: transparent;
   color: currentColor;
   border-color: currentColor;
+}
+
+.plain:hover {
+  opacity: 0.72;
 }

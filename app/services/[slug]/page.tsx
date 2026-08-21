@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
 import { ServicePage } from "@/components/ServicePage/ServicePage";
 import { getServicePage, servicePages } from "@/data/services";
@@ -45,7 +44,6 @@ export default async function ServiceRoute({ params }: ServiceRouteProps) {
     <div className="pageShell">
       <Header />
       <ServicePage service={service} />
-      <Footer />
     </div>
   );
 }

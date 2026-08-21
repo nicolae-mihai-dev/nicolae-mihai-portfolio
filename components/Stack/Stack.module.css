@@ -1,237 +1,233 @@
 .stack {
+  position: relative;
   overflow: hidden;
-  color: var(--text-primary);
-  background: var(--color-bg);
-  border-top: 1px solid var(--color-border);
+  color: var(--color-heading);
+  background: var(--color-white);
   scroll-margin-top: var(--scroll-offset);
 }
 
+/* ---------------------------------------------
+   SECTION
+--------------------------------------------- */
+
 .inner {
-  padding-block: 12rem 14rem;
+  padding-block: 9rem 9.5rem;
 }
 
+/* ---------------------------------------------
+   SECTION HEADER
+--------------------------------------------- */
+
 .header {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(32rem, 0.55fr);
-  align-items: end;
-  gap: 8rem;
-  margin-bottom: 7.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4.4rem;
+  text-align: center;
 }
 
 .label {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.4rem;
-  color: var(--yellow);
-  font-size: 2.1rem;
-  font-weight: var(--font-weight-heavy);
-  line-height: 1;
-  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 1.9rem;
 }
 
-.label::before {
-  width: 1rem;
-  height: 1rem;
-  background: var(--yellow);
-  border-radius: 50%;
+.label::after {
+  display: block;
+  width: 3.6rem;
+  height: 0.2rem;
+  margin: 1.5rem auto 0;
+  background: currentColor;
   content: "";
 }
 
 .heading {
-  max-width: 70rem;
-  margin: 0;
-  color: var(--text-primary);
-  font-size: var(--section-title);
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.86;
-  text-align: left;
-  text-transform: uppercase;
-}
-
-.heading span {
-  color: var(--pink);
+  max-width: 82rem;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .intro {
-  max-width: 43rem;
-  margin: 0 0 1rem;
-  color: var(--text-secondary);
-  font-size: 1.9rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.45;
+  max-width: 70rem;
+  margin: 3.5rem auto 0;
+  text-align: center;
 }
+
+/* ---------------------------------------------
+   GRID
+--------------------------------------------- */
 
 .grid {
-  display: flex;
-  gap: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.8rem;
 }
+
+/* ---------------------------------------------
+   CARD
+--------------------------------------------- */
 
 .card {
-  --stack-accent: var(--yellow);
-
   position: relative;
-  flex: 1 1 0;
   min-width: 0;
-  min-height: 46rem;
-  padding: 5rem 3.4rem 3.8rem;
   overflow: hidden;
-  color: var(--text-primary);
-  background: var(--surface);
-  border-radius: 2rem;
-  isolation: isolate;
+  background: var(--color-white);
+  border: 1px solid var(--color-rule);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--color-white) 90%, transparent) inset,
+    0 2rem 5rem -4rem color-mix(in srgb, var(--color-heading) 20%, transparent);
   transition:
-    background-color var(--transition-hover),
-    transform var(--transition-hover),
-    flex-grow var(--transition-hover);
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.card::before {
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 0.6rem;
-  background: var(--stack-accent);
-  content: "";
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform var(--transition-hover);
+/* ---------------------------------------------
+   CARD HEADER
+--------------------------------------------- */
+
+.cardHeader {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 2.8rem;
+  overflow: hidden;
+  background: var(--color-brand-orange-hover);
+  justify-content: center;
 }
 
-.rail {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
+/*
+  Giant number in background.
+  Intentionally cropped by the header.
+*/
+
+.cardNumber {
+  color: color-mix(in srgb, var(--color-white) 10%, transparent);
+  font-family: var(--font-heading);
+  letter-spacing: var(--tracking-normal);
   pointer-events: none;
-}
-
-.rail::before {
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 17rem;
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-display);
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 0.6rem;
-  background: var(--stack-accent);
-  content: "";
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform var(--transition-hover);
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
 }
 
-.rail::after {
-  display: none;
-}
-
-.triangle {
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  width: 15rem;
-  height: 10.5rem;
-  background: var(--stack-accent);
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  opacity: 0;
-  transform: translate(100%, 100%);
-  transition:
-    opacity var(--transition-hover),
-    transform var(--transition-hover);
-}
-
-.card:hover {
-  background: var(--surface-hover);
-  flex-grow: 1.2;
-  transform: translateY(-0.5rem);
-}
-
-.card:hover::before {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.card:hover .rail::before {
-  transform: scaleY(1);
-}
-
-.card:hover .triangle {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-.yellow {
-  --stack-accent: var(--yellow);
-}
-
-.cyan {
-  --stack-accent: var(--cyan);
-}
-
-.pink {
-  --stack-accent: var(--pink);
-}
-
-.purple {
-  --stack-accent: var(--purple);
-}
-
-.card h3 {
+.cardHeader h3 {
   position: relative;
-  z-index: 4;
-  margin: 0 0 4.4rem;
-  padding: 0;
-  color: var(--stack-accent);
-  font-size: clamp(3rem, 2.3vw, 4.2rem);
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.9;
-  text-transform: uppercase;
-}
-
-.card ul {
-  position: relative;
-  z-index: 4;
+  z-index: 2;
+  max-width: 100%;
   margin: 0;
-  padding: 0;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--heading-xs);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------
+   TECHNOLOGY LIST
+--------------------------------------------- */
+
+.techList {
+  margin: 0;
+  padding: 1.8rem 2.8rem 2.5rem;
   list-style: none;
 }
 
-.card li {
-  min-height: 4.3rem;
-  padding: 1rem 0;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border);
-  font-size: 1.8rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.25;
+.techList li {
+  min-width: 0;
 }
 
-.card li:last-child {
+/* ---------------------------------------------
+   TECHNOLOGY
+--------------------------------------------- */
+
+.technology {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 6rem;
+  padding-block: 0.9rem;
+}
+
+.techList li:last-child .technology {
   border-bottom: 0;
 }
 
+/* ---------------------------------------------
+   TECHNOLOGY ICON
+--------------------------------------------- */
+
+.iconBox {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  /* height: 3.8rem; */
+
+  background: var(--color-section);
+  border-radius: 0.8rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.techIcon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--tech-color);
+}
+
+.monogram {
+  color: var(--tech-color);
+  font-size: 2.7rem;
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.technology:hover .iconBox {
+  background: var(--color-white);
+  border-color: var(--tech-color);
+}
+
+/* ---------------------------------------------
+   TECHNOLOGY NAME
+--------------------------------------------- */
+
+.techName {
+  min-width: 0;
+  color: var(--color-label);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+/* ---------------------------------------------
+   TABLET
+--------------------------------------------- */
+
 @media (max-width: 110rem) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: 2.8rem;
-  }
-
-  .intro {
-    max-width: 65rem;
-  }
-
   .grid {
-    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .card {
-    flex: initial;
-    min-height: 42rem;
+    gap: 2rem;
   }
 }
+
+/* ---------------------------------------------
+   MOBILE
+--------------------------------------------- */
 
 @media (max-width: 65rem) {
   .inner {
@@ -239,49 +235,84 @@
   }
 
   .header {
-    margin-bottom: 4.8rem;
+    margin-bottom: 4.4rem;
   }
 
   .heading {
-    font-size: var(--section-title-mobile);
-  }
-
-  .intro {
-    font-size: 1.7rem;
+    font-size: var(--heading-section);
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.8rem;
   }
 
-  .card {
-    min-height: auto;
-    padding: 4rem 2.6rem 3rem;
+  .cardHeader {
+    min-height: 11rem;
+    padding: 2.5rem;
   }
 
-  .card h3 {
-    margin-bottom: 2.8rem;
-    font-size: 3.4rem;
+  .cardNumber {
+    top: -1rem;
+    left: 1.5rem;
+    font-size: 11rem;
   }
 
-  .card li {
-    font-size: 1.7rem;
-  }
-
-  .triangle {
-    width: 11rem;
-    height: 8rem;
+  .techList {
+    padding: 1.5rem 2.5rem 2.2rem;
   }
 }
 
-@media (hover: none) {
-  .card:hover {
-    transform: none;
+/* ---------------------------------------------
+   SMALL MOBILE
+--------------------------------------------- */
+
+@media (max-width: 42rem) {
+  .inner {
+    padding-block: 6.5rem;
   }
 
-  .rail,
-  .triangle {
-    display: none;
+  .intro {
+    font-size: var(--text-md);
+  }
+
+  .cardHeader {
+    min-height: 10rem;
+    padding: 2.2rem;
+  }
+
+  .cardNumber {
+    font-size: 10rem;
+  }
+
+  .cardHeader h3 {
+    font-size: var(--heading-sm);
+  }
+
+  .techList {
+    padding: 1.3rem 2.2rem 2rem;
+  }
+
+  .technology {
+    min-height: 5.7rem;
+  }
+
+  .techName {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ---------------------------------------------
+   REDUCED MOTION
+--------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .iconBox {
+    transition: none;
+  }
+
+  .card:hover,
+  .technology:hover .iconBox {
+    transform: none;
   }
 }

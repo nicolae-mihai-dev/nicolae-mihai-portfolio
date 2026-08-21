@@ -45,7 +45,7 @@ export function ServicePage({ service }: ServicePageProps) {
               <h1>{service.title}</h1>
             </div>
             <div className={styles.heroText}>
-              <p>{service.heroText}</p>
+              <p className="type-section-copy">{service.heroText}</p>
               <div className={styles.heroActions}>
                 <Button href={`mailto:${globalServiceCta.email}`}>
                   Contact Me
@@ -61,9 +61,9 @@ export function ServicePage({ service }: ServicePageProps) {
 
       <section className={styles.angle}>
         <div className={`container ${styles.angleInner}`}>
-          <span className={styles.kicker}>Direction</span>
+          <span className={`${styles.kicker} type-kicker`}>Direction</span>
           <h2>{service.angleTitle}</h2>
-          <p>{service.angleText}</p>
+          <p className="type-section-copy">{service.angleText}</p>
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export function ServicePage({ service }: ServicePageProps) {
         <div className={`container ${styles.approachInner}`}>
           <div className={styles.approachHeading}>
             <h2>How I approach it</h2>
-            <p>
+            <p className="type-body">
               A focused implementation path, from reviewing the direction to
               preparing a working preview and handoff notes.
             </p>
@@ -102,7 +102,9 @@ export function ServicePage({ service }: ServicePageProps) {
           <ol className={styles.steps}>
             {service.approach.map((step, index) => (
               <li key={step}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span className="type-emphasis">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <p>{step}</p>
               </li>
             ))}
@@ -116,9 +118,9 @@ export function ServicePage({ service }: ServicePageProps) {
           <div className={styles.exampleList}>
             {service.examples.map((example) => (
               <article className={styles.example} key={example.title}>
-                <span>{example.status}</span>
+                <span className="type-kicker">{example.status}</span>
                 <h3>{example.title}</h3>
-                <p>{example.description}</p>
+                <p className="type-body">{example.description}</p>
               </article>
             ))}
           </div>
@@ -128,12 +130,15 @@ export function ServicePage({ service }: ServicePageProps) {
       <section className={styles.cta}>
         <div className={`container ${styles.ctaInner}`}>
           <div>
-            <span>{service.ctaTitle}</span>
+            <span className="type-kicker">{service.ctaTitle}</span>
             <h2>{globalServiceCta.title}</h2>
           </div>
           <div className={styles.ctaPanel}>
-            <p>{globalServiceCta.text}</p>
-            <a className={styles.email} href={`mailto:${globalServiceCta.email}`}>
+            <p className="type-section-copy">{globalServiceCta.text}</p>
+            <a
+              className={`${styles.email} type-emphasis`}
+              href={`mailto:${globalServiceCta.email}`}
+            >
               {globalServiceCta.email}
             </a>
             <div className={styles.ctaActions}>

@@ -1,59 +1,61 @@
 .page {
-  --service-accent: var(--cyan);
-  --service-bg: var(--color-bg);
-  --service-surface: var(--surface);
-  --service-muted: var(--text-muted);
-  --service-border: var(--border);
-
-  overflow: hidden;
-  color: var(--text-primary);
+  --service-bg: var(--color-white);
+  --service-accent: var(--color-brand-orange);
+  --service-soft: var(--color-section);
+  --service-ink: var(--color-heading);
+  --service-muted: var(--color-body);
   background: var(--service-bg);
+  color: var(--service-ink);
 }
-
 .themeSky {
-  --service-accent: var(--cyan);
+  --service-bg: var(--color-section);
+  --service-soft: var(--color-white);
 }
 
 .themePeach {
-  --service-accent: var(--yellow);
+  --service-bg: var(--color-section);
+  --service-soft: var(--color-white);
 }
 
 .themeIvory {
-  --service-accent: var(--pink);
+  --service-bg: var(--color-white);
+  --service-soft: var(--color-section);
 }
 
 .themeDark {
-  --service-accent: #7f45ce;
+  --service-bg: var(--color-section);
+  --service-soft: var(--color-white);
+  --service-ink: var(--color-heading);
+  --service-muted: var(--color-body);
 }
 
 .hero {
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--service-border);
+  min-height: calc(100svh - var(--site-header-height));
 }
 
 .heroInner {
-  padding-block: 2.4rem 12rem;
+  padding-block: var(--space-label-title) var(--section-pad);
 }
 
 .breadcrumbs {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem 2rem;
-  margin-bottom: 8rem;
+  gap: 1.1rem 1.9rem;
+  margin-bottom: var(--space-section-heading);
 }
 
 .breadcrumbs a,
 .textLink,
 .relatedLinks a {
-  color: var(--text-primary);
-  font-size: 1.6rem;
+  color: currentColor;
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-bold);
-  line-height: 1;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
   text-decoration: underline;
   text-decoration-color: var(--service-accent);
-  text-decoration-thickness: 0.2rem;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.28em;
-  transition: color var(--transition-hover);
 }
 
 .breadcrumbs a:hover,
@@ -64,9 +66,9 @@
 
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(30rem, 0.5fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(30.4rem, 0.5fr);
+  gap: clamp(3.2rem, 7vw, 9.6rem);
   align-items: end;
-  gap: clamp(4rem, 8vw, 11rem);
 }
 
 .heroCopy,
@@ -75,38 +77,23 @@
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  min-height: 4.8rem;
-  margin: 0 0 3.6rem;
-  padding: 0.8rem 2rem;
-  color: var(--pink);
-  background: var(--cyan);
-  border-radius: var(--radius-md);
-  font-size: 2rem;
-  font-weight: var(--font-weight-heavy);
-  line-height: 1;
+  margin: 0 0 var(--space-title-copy);
+  color: var(--service-accent);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
   text-transform: uppercase;
 }
 
 .hero h1 {
-  max-width: 14ch;
+  max-width: 12ch;
   margin: 0;
-  color: var(--text-primary);
-  font-size: var(--display-hero);
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.88;
-  text-transform: uppercase;
 }
 
 .heroText p {
-  max-width: 48rem;
   margin: 0;
-  color: var(--text-secondary);
-  font-size: 1.9rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.45;
+  color: var(--service-muted);
 }
 
 .heroActions,
@@ -114,41 +101,23 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.4rem 2rem;
-  margin-top: 3rem;
+  gap: 1.4rem 1.8rem;
+  margin-top: var(--space-actions);
 }
 
-.angle,
-.approach,
-.related {
-  background: var(--service-bg);
-}
-
-.angle,
-.details,
-.approach,
-.examples,
-.cta,
-.related {
-  border-bottom: 1px solid var(--service-border);
+.angle {
 }
 
 .angleInner {
   display: grid;
-  grid-template-columns: 16rem minmax(0, 0.75fr) minmax(28rem, 0.55fr);
-  align-items: start;
+  grid-template-columns: 16rem minmax(0, 0.75fr) minmax(28.8rem, 0.55fr);
   gap: clamp(2.4rem, 5vw, 6.4rem);
-  padding-block: 10rem;
+  align-items: start;
+  padding-block: var(--section-pad);
 }
 
-.kicker,
-.example > span,
-.cta > .ctaInner > div > span {
+.kicker {
   color: var(--service-accent);
-  font-size: 1.6rem;
-  font-weight: var(--font-weight-heavy);
-  line-height: 1;
-  text-transform: uppercase;
 }
 
 .angle h2,
@@ -159,56 +128,58 @@
 .includes h2,
 .fit h2 {
   margin: 0;
-  color: var(--text-primary);
-  font-size: var(--section-title);
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.9;
-  text-transform: uppercase;
+  color: var(--service-ink);
 }
 
 .angle h2 {
-  max-width: 15ch;
+  max-width: 13ch;
 }
 
 .angle p {
-  max-width: 44rem;
   margin: 0;
   color: var(--service-muted);
-  font-size: 1.8rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.48;
 }
 
-.details {
-  background: var(--service-bg);
+.details,
+.approach,
+.examples,
+.cta,
+.related {
 }
 
 .detailsGrid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 0.55fr);
-  gap: clamp(2rem, 3vw, 3.2rem);
-  padding-block: 10rem;
+  grid-template-columns: minmax(0, 0.9fr) minmax(28.8rem, 0.55fr);
+  gap: clamp(1.9rem, 3vw, 3.2rem);
+  padding-block: var(--section-pad);
 }
 
 .includes,
 .fit,
-.example {
-  background: var(--service-surface);
-  border: 1px solid var(--service-border);
-  border-radius: var(--radius-md);
+.example,
+.ctaPanel {
+  background: var(--service-soft);
+  border: 1px solid color-mix(in srgb, var(--service-ink) 16%, transparent);
+  border-radius: var(--radius-lg);
 }
 
 .includes,
 .fit {
-  padding: clamp(2.8rem, 3.5vw, 4.4rem);
+  padding: clamp(2.4rem, 3vw, 4rem);
+}
+
+.includes h2,
+.fit h2,
+.examples h2,
+.approachHeading h2,
+.related h2 {
 }
 
 .includes ul,
 .fit ul {
   display: grid;
   gap: 1.4rem;
-  margin: 4rem 0 0;
+  margin: var(--space-label-title) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -216,161 +187,134 @@
 .includes li,
 .fit li {
   padding-top: 1.4rem;
+  border-top: 1px solid color-mix(in srgb, var(--service-ink) 13%, transparent);
   color: var(--service-muted);
-  border-top: 1px solid var(--service-border);
-  font-size: 1.7rem;
+  font-size: var(--text-md);
   font-weight: var(--font-weight-regular);
-  line-height: 1.35;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
   overflow-wrap: anywhere;
 }
 
 .approachInner {
   display: grid;
   grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(4rem, 8vw, 11rem);
-  padding-block: 10rem;
+  gap: clamp(3.2rem, 7vw, 9.6rem);
+  padding-block: var(--section-pad);
 }
 
 .approachHeading p {
-  max-width: 43rem;
-  margin: 2.4rem 0 0;
+  max-width: 43.2rem;
+  margin: var(--space-title-copy) 0 0;
   color: var(--service-muted);
-  font-size: 1.7rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.45;
 }
 
 .steps {
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--service-border);
+  border-top: 1px solid color-mix(in srgb, var(--service-ink) 48%, transparent);
   list-style: none;
 }
 
 .steps li {
   display: grid;
   grid-template-columns: 5.6rem minmax(0, 1fr);
-  gap: 2.4rem;
-  padding-block: 2.4rem;
-  border-bottom: 1px solid var(--service-border);
+  gap: clamp(1.6rem, 3vw, 3.2rem);
+  padding-block: var(--space-section-rule);
+  border-bottom: 1px solid color-mix(in srgb, var(--service-ink) 14%, transparent);
 }
 
 .steps span {
   color: var(--service-accent);
-  font-size: 1.7rem;
-  font-weight: var(--font-weight-heavy);
-  line-height: 1;
 }
 
 .steps p {
-  margin: 0.4rem 0 0;
-  color: var(--text-primary);
-  font-size: 1.8rem;
+  margin: 0.5rem 0 0;
+  color: var(--service-ink);
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-bold);
-  line-height: 1.2;
-}
-
-.examples {
-  background: var(--service-bg);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
 }
 
 .examplesInner {
-  padding-block: 10rem;
+  padding-block: var(--section-pad);
 }
 
 .exampleList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.2rem;
-  margin-top: 4rem;
+  gap: clamp(1.6rem, 2vw, 2.2rem);
+  margin-top: var(--space-label-title);
 }
 
 .example {
-  min-height: 25rem;
-  padding: clamp(2.6rem, 3vw, 3.6rem);
+  min-height: 27.2rem;
+  padding: clamp(2.2rem, 3vw, 3.2rem);
+}
+
+.example span,
+.cta span {
+  color: var(--service-accent);
 }
 
 .example h3 {
-  max-width: 15ch;
-  margin: 4.8rem 0 0;
-  padding: 0;
-  color: var(--text-primary);
-  font-size: 3rem;
-  font-weight: var(--font-weight-heavy);
-  line-height: 0.95;
+  max-width: 13ch;
+  margin: var(--space-card-heading) 0 0;
+  color: var(--service-ink);
 }
 
 .example p {
-  margin: 1.6rem 0 0;
+  margin: var(--space-card-copy) 0 0;
   color: var(--service-muted);
-  font-size: 1.7rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.45;
-}
-
-.cta {
-  color: #000000;
-  background: var(--yellow);
-  border-color: #000000;
 }
 
 .ctaInner {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(30rem, 0.55fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(30.4rem, 0.55fr);
+  gap: clamp(3.2rem, 7vw, 9.6rem);
   align-items: end;
-  gap: clamp(4rem, 8vw, 11rem);
-  padding-block: 10rem;
+  padding-block: var(--section-pad);
 }
 
 .cta h2 {
-  max-width: 12ch;
-  margin-top: 2.6rem;
-  color: #000000;
+  max-width: 11ch;
+  margin-top: var(--space-actions);
 }
 
 .ctaPanel {
-  padding: clamp(2.8rem, 3.5vw, 4rem);
-  color: var(--text-primary);
-  background: #201f24;
-  border-radius: var(--radius-md);
+  padding: clamp(2.4rem, 3vw, 3.5rem);
 }
 
 .ctaPanel p {
   margin: 0;
-  color: var(--text-primary);
-  font-size: 1.8rem;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.48;
+  color: var(--service-muted);
 }
 
 .email {
   display: block;
   width: fit-content;
-  max-width: 100%;
-  margin-top: 2.4rem;
-  color: var(--text-primary);
-  font-size: 2.1rem;
-  font-weight: 600;
-  line-height: 1;
+  margin-top: var(--space-title-copy);
+  color: var(--service-ink);
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .relatedInner {
   display: grid;
-  grid-template-columns: minmax(19rem, 0.38fr) minmax(0, 1fr);
+  grid-template-columns: minmax(19.2rem, 0.38fr) minmax(0, 1fr);
   gap: clamp(2.4rem, 5vw, 6.4rem);
-  padding-block: 8rem;
+  padding-block: var(--space-section-heading);
 }
 
 .relatedLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.4rem 2.4rem;
+  gap: 1.3rem 2.2rem;
 }
 
 .variantEditorial .detailsGrid {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .variantEditorial .includes ul,
@@ -379,8 +323,33 @@
   gap: 1.6rem 3.2rem;
 }
 
+.variantDarkPanel .angle {
+  background: var(--color-section);
+  color: var(--color-heading);
+}
+
+.variantDarkPanel .angle h2 {
+  color: var(--color-heading);
+}
+
+.variantDarkPanel .angle p {
+  color: var(--color-body);
+}
+
 .variantTimeline .steps li {
   grid-template-columns: 5.6rem minmax(0, 1fr);
+}
+
+.themeDark .hero {
+  background: var(--color-section);
+}
+
+.themeDark .cta {
+  --service-accent: var(--color-heading);
+  --service-ink: var(--color-heading);
+  --service-muted: var(--color-body);
+  background: var(--color-brand-orange);
+  color: var(--color-heading);
 }
 
 @media (max-width: 94rem) {
@@ -394,12 +363,7 @@
   }
 
   .breadcrumbs {
-    margin-bottom: 6rem;
-  }
-
-  .heroText p,
-  .angle p {
-    max-width: 65rem;
+    margin-bottom: var(--space-section-heading);
   }
 
   .variantEditorial .includes ul,
@@ -422,47 +386,15 @@
     margin-inline: auto;
   }
 
-  .heroInner {
-    padding-block: 2rem 8rem;
-  }
-
-  .breadcrumbs {
-    margin-bottom: 5rem;
-  }
-
   .hero h1 {
-    max-width: 12ch;
-  }
-
-  .heroText {
-    margin-top: 3rem;
+    max-width: 11ch;
+    font-size: clamp(2.7rem, 7.6vw, 3.5rem);
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--line-height-ui);
   }
 
   .heroText p {
-    font-size: 1.7rem;
-  }
-
-  .eyebrow {
-    margin-bottom: 2.8rem;
-    font-size: 1.8rem;
-  }
-
-  .angleInner,
-  .detailsGrid,
-  .approachInner,
-  .examplesInner,
-  .ctaInner {
-    padding-block: 7.2rem;
-  }
-
-  .angle h2,
-  .approachHeading h2,
-  .examples h2,
-  .cta h2,
-  .related h2,
-  .includes h2,
-  .fit h2 {
-    font-size: var(--section-title-mobile);
+    font-size: var(--text-md);
   }
 
   .includes,
@@ -472,13 +404,8 @@
     border-radius: var(--radius-md);
   }
 
-  .steps li {
-    grid-template-columns: 4.8rem minmax(0, 1fr);
-    gap: 1.6rem;
-  }
-
-  .relatedInner {
-    gap: 3.2rem;
-    padding-block: 6.4rem;
+  .steps li,
+  .variantTimeline .steps li {
+    grid-template-columns: 5.6rem minmax(0, 1fr);
   }
 }

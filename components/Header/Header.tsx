@@ -3,13 +3,21 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/Button/Button";
-import { navLinks, siteInfo } from "@/data/site";
 import styles from "./Header.module.css";
+
+const navigation = [
+  { label: "Work", href: "/#projects" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Contact", href: "/#contact" },
+];
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
   const [isHidden, setIsHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -20,6 +28,7 @@ export function Header() {
 
     const syncHeaderHeight = () => {
       const { height } = header.getBoundingClientRect();
+
       document.documentElement.style.setProperty(
         "--site-header-height",
         `${height}px`,
@@ -30,6 +39,7 @@ export function Header() {
 
     const observer = new ResizeObserver(syncHeaderHeight);
     observer.observe(header);
+
     window.addEventListener("resize", syncHeaderHeight);
 
     return () => {
@@ -46,7 +56,7 @@ export function Header() {
       const currentScrollY = window.scrollY;
       const scrollDelta = currentScrollY - lastScrollY.current;
 
-      if (currentScrollY <= hideAfter) {
+      if (isMenuOpen || currentScrollY <= hideAfter) {
         setIsHidden(false);
       } else if (scrollDelta > showThreshold) {
         setIsHidden(true);
@@ -58,35 +68,91 @@ export function Header() {
     };
 
     lastScrollY.current = window.scrollY;
-    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const closeMenu = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", closeMenu);
+
+    return () => {
+      document.removeEventListener("keydown", closeMenu);
+    };
+  }, [isMenuOpen]);
 
   return (
     <header
-      className={`${styles.header} ${isHidden ? styles.hidden : ""}`}
+      className={`${styles.header} ${isHidden && !isMenuOpen ? styles.hidden : ""}`}
       ref={headerRef}
     >
       <div className={`container ${styles.inner}`}>
-        <Link className={styles.logo} href="/" aria-label="Nicolae Mihai home">
-          <span className={styles.bracket}>&lt;</span>NM
-          <span className={styles.accent}>.</span>DEV
+        <Link
+          className={`${styles.logo} type-logo`}
+          href="/"
+          aria-label="Nicolae Mihai home"
+        >
+          <span className={styles.bracket}>&lt;</span>
+          <span className={styles.logoName}>NM</span>
+          <span className={styles.accent}>.</span>
+          <span className={styles.logoDev}>DEV</span>
           <span className={styles.bracket}>&gt;</span>
         </Link>
 
-        <nav className={styles.nav} aria-label="Primary navigation">
-          {navLinks.map((item) => (
-            <Link className={styles.navLink} href={item.href} key={item.href}>
+        <button
+          aria-controls="primary-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          className={styles.menuToggle}
+          onClick={() => {
+            setIsHidden(false);
+            setIsMenuOpen((open) => !open);
+          }}
+          type="button"
+        >
+          <span className={styles.menuIcon} aria-hidden="true">
+            <span className={styles.menuLine} />
+            <span className={styles.menuLine} />
+            <span className={styles.menuLine} />
+          </span>
+        </button>
+
+        <nav
+          className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
+          {navigation.map((item) => (
+            <Link
+              className={styles.navLink}
+              href={item.href}
+              key={item.href}
+              onClick={() => setIsMenuOpen(false)}
+            >
               {item.label}
             </Link>
           ))}
         </nav>
 
         <Button className={styles.cta} href="/#contact" size="medium">
-          {siteInfo.ctaLabel}
+          Let&apos;s work together
         </Button>
       </div>
     </header>

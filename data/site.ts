@@ -11,12 +11,6 @@ export type Service = {
   featured?: boolean;
 };
 
-export type WorkTrack = {
-  title: string;
-  description: string;
-  items: string[];
-};
-
 export type ProjectStatus = "Live" | "In progress" | "Planned";
 
 export type ProjectLink = {
@@ -30,17 +24,6 @@ export type Project = {
   tags: string[];
   links: ProjectLink[];
   status: ProjectStatus;
-};
-
-export type CaseStudyStep = {
-  title: string;
-  description: string;
-};
-
-export type ProcessStep = {
-  number: string;
-  title: string;
-  description: string;
 };
 
 export type StackGroup = {
@@ -69,10 +52,8 @@ export const siteInfo = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "Work", href: "/#two-tracks" },
   { label: "Services", href: "/#services" },
   { label: "Projects", href: "/#projects" },
-  { label: "Process", href: "/#process" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -124,38 +105,6 @@ export const services: Service[] = [
   },
 ];
 
-export const workTracks: WorkTrack[] = [
-  {
-    title: "Front-end & Product-style Builds",
-    description:
-      "Modern interfaces with reusable structure, clear states and implementation details that can grow past the first page.",
-    items: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "APIs",
-      "Dashboard interfaces",
-      "Landing pages",
-      "Component structure",
-    ],
-  },
-  {
-    title: "CMS & Marketing Websites",
-    description:
-      "Content systems for teams and site owners who need controlled editing, campaign sections and practical publishing workflows.",
-    items: [
-      "WordPress",
-      "ACF",
-      "HubSpot CMS",
-      "WooCommerce",
-      "Editable sections",
-      "Responsive updates",
-      "Content workflows",
-    ],
-  },
-];
-
 export const projects: Project[] = [
   {
     title: "React / Next.js Portfolio Website",
@@ -198,11 +147,7 @@ export const projects: Project[] = [
     description:
       "A WordPress implementation with flexible content sections, editable fields and a structure designed for non-technical content updates.",
     tags: ["WordPress", "ACF", "PHP", "Custom Theme"],
-    links: [
-      { label: "Preview" },
-      { label: "GitHub" },
-      { label: "Case Study" },
-    ],
+    links: [{ label: "Preview" }, { label: "GitHub" }, { label: "Case Study" }],
     status: "Planned",
   },
   {
@@ -210,11 +155,7 @@ export const projects: Project[] = [
     description:
       "A WooCommerce-focused build with product presentation, cart flow styling and front-end improvements shaped around clear product browsing.",
     tags: ["WordPress", "WooCommerce", "CSS", "UX"],
-    links: [
-      { label: "Preview" },
-      { label: "GitHub" },
-      { label: "Case Study" },
-    ],
+    links: [{ label: "Preview" }, { label: "GitHub" }, { label: "Case Study" }],
     status: "Planned",
   },
   {
@@ -227,91 +168,66 @@ export const projects: Project[] = [
   },
 ];
 
-export const caseStudySteps: CaseStudyStep[] = [
-  {
-    title: "Problem",
-    description: "What the project needed to solve or demonstrate.",
-  },
-  {
-    title: "Approach",
-    description:
-      "How the layout, CMS structure, data flow or component system was planned.",
-  },
-  {
-    title: "Build",
-    description:
-      "The technical implementation, from front-end structure to CMS fields, APIs or database logic.",
-  },
-  {
-    title: "Handoff",
-    description:
-      "Live link, GitHub repository, setup notes and implementation details.",
-  },
-];
-
-export const processSteps: ProcessStep[] = [
-  {
-    number: "01",
-    title: "Brief & Direction",
-    description:
-      "Clarify the goal, pages, content needs, target users and technical requirements.",
-  },
-  {
-    number: "02",
-    title: "Structure & Content Plan",
-    description:
-      "Define sections, navigation, CMS fields, responsive behavior and the main user flow.",
-  },
-  {
-    number: "03",
-    title: "Design-minded Implementation",
-    description:
-      "Build the interface with attention to spacing, typography, reusable components and clean front-end structure.",
-  },
-  {
-    number: "04",
-    title: "Responsive Polish",
-    description:
-      "Review desktop, tablet and mobile states, fix layout issues and refine details that affect usability.",
-  },
-  {
-    number: "05",
-    title: "Deploy & Handoff",
-    description:
-      "Prepare live preview, repository, README, setup notes and final implementation documentation.",
-  },
-];
-
 export const stackGroups: StackGroup[] = [
   {
-    title: "Interface",
+    title: "Frontend",
     items: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js"],
   },
   {
-    title: "CMS",
-    items: ["WordPress", "ACF", "HubSpot CMS", "WooCommerce"],
-  },
-  {
     title: "Backend & Data",
-    items: ["Node.js", "Express", "REST APIs", "SQL", "PostgreSQL"],
+    items: ["Node.js", "Express", "PostgreSQL", "SQL", "REST APIs"],
   },
   {
-    title: "Workflow",
-    items: ["Git", "GitHub", "Vercel", "README documentation", "Responsive testing"],
+    title: "CMS & Platforms",
+    items: [
+      "WordPress",
+      "Advanced Custom Fields",
+      "PHP",
+      "HubSpot CMS",
+      "WooCommerce",
+    ],
+  },
+  {
+    title: "Delivery & Workflow",
+    items: [
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Browser DevTools",
+      "Responsive Testing",
+      "Figma",
+    ],
   },
 ];
 
 export const aboutDetails = [
-  { label: "Name", value: "Nicolae Mihai" },
-  { label: "Role", value: "Web Developer" },
-  { label: "Focus", value: "React / WordPress / HubSpot" },
-  { label: "Email", value: siteInfo.email },
+  {
+    label: "Name",
+    value: "Nicolae Mihai",
+  },
+  {
+    label: "Role",
+    value: "Web Developer",
+  },
+  {
+    label: "Focus",
+    value: "React / Next.js / Full-Stack / CMS",
+  },
+  {
+    label: "Experience",
+    value: "8+ Years Web Development",
+  },
 ];
 
 export const contactLinks: ContactLink[] = [
-  { label: "GitHub" },
-  { label: "LinkedIn" },
-  { label: "Upwork later" },
+  {
+    label: "GitHub",
+    href: "https://github.com/nicolae-mihai-dev",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/nicolae-mihai-311b6042a/",
+  },
 ];
 
 export const futureRoutes = [

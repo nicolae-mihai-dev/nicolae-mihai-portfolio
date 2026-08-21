@@ -1,4 +1,5 @@
 @import "../styles/tokens.css";
+@import "../styles/typography.css";
 
 *,
 *::before,
@@ -17,18 +18,18 @@ body {
   overflow-x: clip;
   min-height: 100vh;
   margin: 0;
-  background: var(--color-ivory);
-  color: var(--text-secondary);
+  background: var(--color-white);
+  color: var(--color-body);
   font-family: var(--font-sans);
   font-size: var(--text-md);
   font-weight: var(--font-weight-regular);
-  line-height: 1.5;
+  line-height: var(--line-height-body);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-orange);
-  color: #000000;
+  background: var(--color-brand-orange);
+  color: var(--color-heading);
 }
 
 a {
@@ -60,27 +61,21 @@ svg {
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
 h6 {
-  color: var(--text-primary);
-  font-family: var(--font-sans);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
   font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.9;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-display);
   text-transform: uppercase;
   text-wrap: balance;
 }
 
 h1 {
   font-size: var(--display-hero);
-  font-weight: var(--font-weight-heavy);
-}
-
-h2 {
-  font-size: var(--heading-xl);
   font-weight: var(--font-weight-heavy);
 }
 
@@ -98,20 +93,12 @@ h6 {
   font-size: var(--text-xl);
 }
 
-p {
-  color: var(--text-secondary);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-regular);
-  line-height: 1.4;
-  text-wrap: pretty;
-}
-
 p + p {
   margin-top: var(--space-paragraph);
 }
 
 :focus-visible {
-  outline: 0.3rem solid var(--color-orange);
+  outline: 0.3rem solid var(--color-brand-orange);
   outline-offset: 0.4rem;
 }
 
@@ -125,22 +112,21 @@ p + p {
 }
 
 .sectionStack {
-  background: var(--color-ivory);
+  background: var(--color-white);
 }
 
 .pageSection {
-  border-top: 1px solid var(--color-border);
   scroll-margin-top: var(--scroll-offset);
 }
 
 .pageSection[data-theme="white"] {
-  background: var(--color-surface);
+  background: var(--color-white);
 }
 
 .pageSection[data-theme="dark"] {
-  background: var(--color-dark);
-  color: var(--color-dark-text);
-  border-color: var(--color-border);
+  background: var(--color-section);
+  color: var(--color-heading);
+  border-color: var(--color-rule);
 }
 
 .sectionInner {

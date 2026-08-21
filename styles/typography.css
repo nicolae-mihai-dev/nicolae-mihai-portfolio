@@ -1,0 +1,132 @@
+/* Reusable typography roles. Component CSS owns layout; these classes own type. */
+
+.type-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--line-height-ui);
+  text-transform: uppercase;
+}
+
+.type-label--accent {
+  color: var(--color-brand-orange);
+}
+
+.type-label--inverse {
+  color: var(--color-white);
+}
+
+h2,
+.type-section-title {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--heading-section);
+  font-weight: var(--font-weight-section);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-section);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.type-section-title--inverse {
+  color: var(--color-white);
+}
+
+p,
+.type-section-copy {
+  color: var(--color-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-body);
+  text-wrap: pretty;
+}
+
+.type-section-copy--inverse {
+  color: var(--color-white);
+}
+
+.type-card-title {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--heading-md);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+}
+
+.type-body {
+  color: var(--color-body);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-body);
+}
+
+.type-ui-strong {
+  color: var(--color-heading);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.type-ui-strong--inverse {
+  color: var(--color-white);
+}
+
+.type-hero-meta {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.type-logo {
+  font-family: var(--font-sans);
+  font-size: var(--text-logo);
+  font-weight: var(--font-weight-logo);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.type-kicker {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
+  text-transform: uppercase;
+}
+
+.type-emphasis {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.type-action {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--line-height-ui);
+  text-transform: uppercase;
+}
+
+.type-index {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.type-tag {
+  color: var(--color-label);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-ui);
+}

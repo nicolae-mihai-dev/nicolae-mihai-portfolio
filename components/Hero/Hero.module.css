@@ -1,156 +1,309 @@
 .hero {
-  min-height: calc(100svh - var(--site-header-height));
-  padding-block: 6.5rem;
-  background: var(--color-bg);
   display: flex;
-  align-items: center;
+  min-height: calc(100svh - var(--site-header-height));
+  background: var(--color-white);
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 6.4rem;
+  display: flex;
+  flex-direction: column;
   width: min(100% - (var(--container-pad) * 2), var(--hero-container));
+  padding-block: clamp(7rem, 8vh, 10rem);
+  justify-content: center;
 }
 
-.copy {
-  max-width: 93rem;
-  min-width: 0;
+/* --------------------------------------------------
+   HERO CONTENT
+-------------------------------------------------- */
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
-.eyebrow {
-  margin: 0 0 1.5rem;
-  color: var(--color-orange);
-  font-family: var(--font-sans);
-  font-size: 2.2rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-transform: uppercase;
+.identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 3rem;
 }
 
-.eyebrow::after {
-  display: block;
-  width: 7.2rem;
-  height: 0.3rem;
-  margin-top: 2.1rem;
-  background: var(--color-orange);
-  border-radius: 999px;
-  content: "";
+.identity span:first-child {
+  color: var(--color-brand-orange);
 }
+
+.identity span:last-child {
+  color: var(--color-body);
+}
+
+/* --------------------------------------------------
+   HEADLINE
+-------------------------------------------------- */
 
 .title {
+  width: min(100%, 106rem);
   margin: 0;
-  color: var(--text-primary);
+  color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: var(--display-hero);
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: 0;
-  line-height: 0.96;
-  text-transform: uppercase;
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-display);
+  text-align: center;
+  text-transform: none;
+  text-wrap: balance;
 }
 
-.titleLine {
+.title span {
   display: block;
-  width: fit-content;
 }
 
-.highlightLine {
-  padding-inline: 0.2em;
-  color: #000000;
-  background: var(--color-orange);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+.title strong {
+  color: var(--color-brand-orange);
+  font: inherit;
 }
 
-.text {
-  max-width: min(53rem, 57vw);
-  margin: clamp(2.4rem, 4vw, 3.8rem) 0 4.8rem;
+/* --------------------------------------------------
+   DESCRIPTION
+-------------------------------------------------- */
+
+.description {
+  width: min(100%, 76rem);
+  margin-top: 3.2rem;
+  text-align: center;
+  margin-top: 4.4rem;
 }
 
-.text p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: var(--text-lg);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.4;
-}
-
-.text p + p {
-  margin-top: var(--space-paragraph);
-}
-
-.note {
-  max-width: 54rem;
-  color: var(--text-secondary);
-  font-size: var(--text-md);
-}
+/* --------------------------------------------------
+   ACTIONS
+-------------------------------------------------- */
 
 .actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.2rem;
-  margin-top: var(--space-actions);
+  margin-top: 4.3rem;
 }
 
-.heroVisual {
+/* --------------------------------------------------
+   CREDIBILITY STRIP
+-------------------------------------------------- */
+
+.credibility {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  margin-top: 4.7rem;
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.credibilityItem {
   position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 9rem;
+  padding: 1.8rem 2.4rem;
+  text-align: center;
+}
+
+.credibilityItem:not(:last-child)::after {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  bottom: 2rem;
+  width: 1px;
+  background: var(--color-rule);
+  content: "";
+}
+
+.credibilityItem strong {
+  color: var(--color-heading);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-ui);
+}
+
+.credibilityItem span {
+  margin-top: 0.5rem;
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
+
+/* --------------------------------------------------
+   SCROLL
+-------------------------------------------------- */
+
+.scrollHint {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  justify-self: end;
-  width: min(100%, 62rem);
+  align-self: center;
+  gap: 0.9rem;
+  margin-top: 4.7rem;
+  color: var(--color-body);
 }
 
-.heroImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+.scrollArrow {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border-right: 2px solid var(--color-brand-orange);
+  border-bottom: 2px solid var(--color-brand-orange);
+  transform: rotate(45deg);
 }
 
-@media (max-width: 86rem) {
+/* --------------------------------------------------
+   LAPTOP / TABLET
+-------------------------------------------------- */
+
+@media (max-width: 90rem) {
+  .title {
+    width: min(100%, 90rem);
+    font-size: clamp(4.8rem, 5vw, 6.6rem);
+  }
+
+  .credibilityItem {
+    padding-inline: 1.6rem;
+  }
+}
+
+@media (max-width: 76rem) {
+  .inner {
+    padding-top: 6rem;
+  }
+
+  .title {
+    width: min(100%, 82rem);
+  }
+
+  .credibility {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .credibilityItem {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .credibilityItem:not(:last-child)::after {
+    display: none;
+  }
+
+  .credibilityItem:nth-child(odd) {
+    border-right: 1px solid var(--color-rule);
+  }
+
+  .credibilityItem:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 52rem) {
   .hero {
-    padding-block: 5.6rem;
+    min-height: auto;
   }
 
   .inner {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
   }
 
-  .heroVisual {
-    justify-self: start;
-    width: min(100%, 42rem);
+  .identity {
+    gap: 0.5rem;
+    margin-bottom: 2.4rem;
+    font-size: var(--text-label);
   }
 
-  .text {
-    max-width: 67rem;
-  }
-}
-
-@media (min-width: 86rem) {
-  .titleLine {
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 52rem) {
   .title {
-    font-size: clamp(3.8rem, 11.5vw, 4.4rem);
-    letter-spacing: 0;
-    line-height: 0.92;
+    width: 100%;
+    font-size: clamp(3.8rem, 10.5vw, 5rem);
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--line-height-ui);
   }
 
-  .text p {
+  .title span {
+    display: inline;
+  }
+
+  .description {
+    width: 100%;
+    margin-top: 2.6rem;
     font-size: var(--text-md);
-    line-height: 1.45;
+    line-height: var(--line-height-body);
   }
 
-  .heroVisual {
-    width: min(100%, 31rem);
+  .actions {
+    margin-top: 2.8rem;
+  }
+
+  .credibility {
+    margin-top: 5rem;
+  }
+
+  .credibilityItem {
+    min-height: 8rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .credibilityItem strong {
+    font-size: var(--text-xs);
+  }
+
+  .credibilityItem span {
+    font-size: var(--text-label);
+  }
+
+  .scrollHint {
+    margin-top: 2rem;
+    font-size: var(--text-label);
   }
 }
 
+/* --------------------------------------------------
+   SMALL MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 36rem) {
+  .title {
+    font-size: clamp(3.4rem, 10vw, 4.2rem);
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
+  }
+
+  .credibility {
+    grid-template-columns: 1fr;
+  }
+
+  .credibilityItem {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .credibilityItem:last-child {
+    grid-column: auto;
+    border-bottom: 0;
+  }
+}
