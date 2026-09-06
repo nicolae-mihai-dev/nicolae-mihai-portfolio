@@ -1,24 +1,16 @@
 # Nicolae Mihai — Developer Portfolio
 
+Personal developer portfolio built with Next.js and TypeScript, focused on web development work, services, technical experience, and contact information.
 
-Personal developer portfolio built with Next.js and TypeScript, focused on presenting my web development work, services, technical experience, and contact information.
-
-
-**Live site:**  
-https://nicolae-mihai-dev.netlify.app
-
+**Live site:** https://nicolae-mihai-dev.netlify.app
 
 ## Overview
 
+The portfolio showcases modern frontend development, CMS implementation, API integrations, and responsive web development.
 
-The portfolio showcases work across modern frontend development, CMS implementation, API integrations, and responsive web development.
-
-
-The project was built as a production-ready Next.js application with a custom design system, reusable components, dynamic service pages, SEO configuration, and a protected contact form.
-
+It is a production-ready Next.js application with a custom design system, reusable components, dynamic service pages, SEO configuration, and a protected contact form.
 
 ## Tech Stack
-
 
 - Next.js
 - React
@@ -29,9 +21,7 @@ The project was built as a production-ready Next.js application with a custom de
 - Cloudflare Turnstile
 - Netlify
 
-
 ## Features
-
 
 - Responsive portfolio interface
 - Reusable component architecture
@@ -42,17 +32,11 @@ The project was built as a production-ready Next.js application with a custom de
 - Cloudflare Turnstile bot protection
 - Honeypot spam protection
 - Netlify rate limiting
-- SEO metadata
-- `robots.txt`
-- XML sitemap
-- Production deployment through Netlify
-
+- SEO metadata, `robots.txt`, and XML sitemap
 
 ## Contact Form Architecture
 
-
 The contact form uses multiple protection layers:
-
 
 - Client-side validation and submission state handling
 - Server-side validation with Zod
@@ -61,50 +45,57 @@ The contact form uses multiple protection layers:
 - Request rate limiting
 - Server-side email delivery with Resend
 
-
 Sensitive environment variables are kept server-side and are not committed to the repository.
-
 
 ## Local Development
 
-
 Clone the repository:
-
 
 ```bash
 git clone https://github.com/nicolae-mihai-dev/nicolae-mihai-portfolio.git
-
-Enter the project directory:
-
 cd nicolae-mihai-portfolio
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
-Create a .env.local file based on .env.example:
+Create a `.env.local` file based on `.env.example`:
 
+```env
 RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+CONTACT_TO_EMAIL=
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
+```
+
+`RESEND_FROM_EMAIL` should use a verified Resend sender before production. `CONTACT_TO_EMAIL` is the inbox that receives inquiries.
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
-Open:
+Open `http://localhost:3000`.
 
-http://localhost:3000
-Quality Checks
+## Quality Checks
+
+```bash
 npm run typecheck
 npm run lint
 npm run build
 npm audit
-Deployment
+```
 
-The project is deployed with Netlify and automatically redeploys when changes are pushed to the main branch.
+## Deployment
 
-Author
+The project can be deployed with Netlify and automatically redeployed when changes are pushed to the main branch. Configure the same server-side environment variables in Netlify before deploying.
+
+## Author
 
 Nicolae Mihai
 

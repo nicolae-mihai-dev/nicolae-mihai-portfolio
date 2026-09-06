@@ -5,6 +5,8 @@ import { z } from "zod";
 export const runtime = "nodejs";
 
 const MAX_BODY_SIZE = 10_000;
+const DEFAULT_CONTACT_FROM = "Nicolae Mihai Portfolio <onboarding@resend.dev>";
+const DEFAULT_CONTACT_TO = "nicolae.mihai.dev@gmail.com";
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
@@ -84,6 +86,8 @@ async function verifyTurnstileToken(
 export async function POST(request: Request) {
   const resendApiKey = process.env.RESEND_API_KEY;
   const turnstileSecretKey = process.env.TURNSTILE_SECRET_KEY;
+  const contactFrom = process.env.RESEND_FROM_EMAIL || DEFAULT_CONTACT_FROM;
+  const contactTo = process.env.CONTACT_TO_EMAIL || DEFAULT_CONTACT_TO;
 
   if (!resendApiKey || !turnstileSecretKey) {
     console.error("Contact API configuration is incomplete.");
@@ -149,7 +153,9 @@ export async function POST(request: Request) {
 
   // Honeypot triggered — silently pretend success.
   if (contactReference.trim()) {
-    logDevelopment("Blocked honeypot submission.");
+    logDevelopment("Blocked honeypot submission.", {
+      contactReferenceLength: contactReference.length,
+    });
 
     return jsonResponse({ success: true }, 200);
   }
@@ -170,6 +176,8 @@ export async function POST(request: Request) {
         403,
       );
     }
+
+    logDevelopment("Turnstile token verified.");
   } catch (error) {
     console.error("Turnstile verification failure:", error);
 
@@ -183,8 +191,8 @@ export async function POST(request: Request) {
     const resend = new Resend(resendApiKey);
 
     const { error } = await resend.emails.send({
-      from: "Nicolae Mihai Portfolio <onboarding@resend.dev>",
-      to: ["nicolae.mihai.dev@gmail.com"],
+      from: contactFrom,
+      to: [contactTo],
       replyTo: email,
       subject: `Portfolio inquiry from ${sanitizeSubject(name)}`,
       text: [
@@ -206,6 +214,8 @@ export async function POST(request: Request) {
         502,
       );
     }
+
+    logDevelopment("Resend accepted contact submission.");
 
     return jsonResponse({ success: true }, 200);
   } catch (error) {

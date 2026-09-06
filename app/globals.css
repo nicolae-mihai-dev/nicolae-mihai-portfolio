@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: var(--color-white);
   color: var(--color-body);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--text-md);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
@@ -28,8 +28,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-brand-orange);
-  color: var(--color-heading);
+  background: var(--color-brand-primary);
+  color: var(--color-white);
 }
 
 a {
@@ -80,7 +80,6 @@ h1 {
 }
 
 h3 {
-  padding: 10px 0;
   font-size: var(--heading-md);
 }
 
@@ -90,7 +89,7 @@ h4 {
 
 h5,
 h6 {
-  font-size: var(--text-xl);
+  font-size: var(--heading-sm);
 }
 
 p + p {
@@ -98,8 +97,24 @@ p + p {
 }
 
 :focus-visible {
-  outline: 0.3rem solid var(--color-brand-orange);
+  outline: 0.3rem solid var(--color-brand-primary);
   outline-offset: 0.4rem;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 100;
+  top: 1.6rem;
+  left: 1.6rem;
+  padding: 1.2rem 1.6rem;
+  color: var(--color-white);
+  background: var(--color-heading);
+  border-radius: var(--radius-xs);
+  transform: translateY(-200%);
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
 }
 
 .container {
@@ -111,47 +126,24 @@ p + p {
   min-height: 100vh;
 }
 
-.sectionStack {
-  background: var(--color-white);
+@media (max-width: 68rem) {
+  :root {
+    --site-header-height: 7.6rem;
+  }
 }
 
-.pageSection {
-  scroll-margin-top: var(--scroll-offset);
-}
-
-.pageSection[data-theme="white"] {
-  background: var(--color-white);
-}
-
-.pageSection[data-theme="dark"] {
-  background: var(--color-section);
-  color: var(--color-heading);
-  border-color: var(--color-rule);
-}
-
-.sectionInner {
-  display: grid;
-  grid-template-columns: minmax(16rem, 0.35fr) 1fr;
-  gap: clamp(3.2rem, 6vw, 8rem);
-  min-height: clamp(28.8rem, 44vw, 48rem);
-  padding-block: var(--section-pad);
-}
-
-.sectionBody {
-  min-height: 16rem;
-  border-left: 1px solid currentColor;
-  opacity: 0.92;
-}
-
-@media (max-width: 76rem) {
-  .sectionInner {
-    grid-template-columns: 1fr;
-    gap: 2.4rem;
-    min-height: 28.8rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .sectionBody {
-    min-height: 11.2rem;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

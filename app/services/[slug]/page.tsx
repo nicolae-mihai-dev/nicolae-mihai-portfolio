@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header/Header";
+import { Footer } from "@/components/Footer/Footer";
 import { ServicePage } from "@/components/ServicePage/ServicePage";
 import { getServicePage, servicePages } from "@/data/services";
 
@@ -27,8 +28,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: service.metaTitle,
+    title: {
+      absolute: service.metaTitle,
+    },
     description: service.metaDescription,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
   };
 }
 
@@ -44,6 +50,7 @@ export default async function ServiceRoute({ params }: ServiceRouteProps) {
     <div className="pageShell">
       <Header />
       <ServicePage service={service} />
+      <Footer variant="inverse" />
     </div>
   );
 }

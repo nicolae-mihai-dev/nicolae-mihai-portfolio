@@ -1,6 +1,8 @@
 :root {
-  --font-sans: "Barlow Semi Condensed", Arial, sans-serif;
-  --font-heading: var(--font-sans);
+  --font-body: var(--font-barlow, "Barlow"), Arial, sans-serif;
+  --font-ui: var(--font-barlow-semi-condensed, "Barlow Semi Condensed"), Arial,
+    sans-serif;
+  --font-heading: var(--font-ui);
   --font-symbol: Arial, sans-serif;
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -12,12 +14,11 @@
   --font-weight-logo: 800;
 
   /* Type scale: labels, text, headings, and display titles. */
-  --text-label: 1.2rem;
+  --text-label: 1.3rem;
   --text-xs: 1.4rem;
   --text-sm: 1.5rem;
   --text-md: 1.6rem;
   --text-lg: 1.8rem;
-  --text-xl: clamp(2.2rem, 2.8vw, 2.8rem);
   --text-logo: 2.7rem;
   --heading-xs: clamp(2rem, 2vw, 2.6rem);
   --heading-sm: clamp(2.2rem, 2.4vw, 2.8rem);
@@ -34,7 +35,17 @@
   --line-height-section: 1;
   --line-height-ui: 1.2;
   --line-height-body: 1.5;
+  --line-height-decorative: 0.8;
   --font-weight-section: var(--font-weight-strong);
+  --label-rule-width: 3.6rem;
+  --label-rule-height: 0.2rem;
+  --label-rule-offset: 1.5rem;
+
+  /* Shared controls */
+  --control-height: 5.2rem;
+  --control-radius: 1rem;
+  --control-padding-block: 1.3rem;
+  --control-padding-inline: 2.6rem;
 
   /* Core palette */
   --color-heading: #111111;
@@ -43,30 +54,24 @@
   --color-white: #fffff8;
   --color-section: #f1f0eb;
   --color-rule: #d8d7d1;
+  --color-brand-primary: #5264d9;
   --color-brand-orange: #f06d2f;
-  --color-brand-orange-text: #b94a18;
-  --color-brand-orange-hover: #d9571d;
-  --color-contact: var(--color-project-accent-two);
-  --color-project-accent-two: #00816f;
-  --color-project-accent-three: #5264d9;
+  --color-footer: #1c1b26;
   --container: 136rem;
   --hero-container: var(--container);
   --container-pad: clamp(1.6rem, 3vw, 3.2rem);
+  --section-pad-95: clamp(7.2rem, 10vw, 9.5rem);
   --section-pad: clamp(7.2rem, 10vw, 12.8rem);
   --section-pad-mobile: clamp(6.4rem, 14vw, 8.8rem);
-  --space-section-rule: clamp(1.9rem, 3vw, 2.9rem);
   --space-section-heading: clamp(4.8rem, 7vw, 8rem);
   --space-label-title: clamp(2.9rem, 4vw, 4.8rem);
   --space-title-copy: 2rem;
   --space-paragraph: 1.6rem;
-  --space-card-heading: clamp(4rem, 6vw, 7.2rem);
-  --space-card-copy: 1.6rem;
   --space-actions: 2.6rem;
-  --site-header-height: 0;
-  --hero-next-section-peek: var(--site-header-height);
+  --site-header-height: 9rem;
   --scroll-offset: calc(var(--site-header-height) + 1.6rem);
-  --radius-sm: 2rem;
+  --radius-xs: 0.8rem;
   --radius-md: 2rem;
-  --radius-lg: 2rem;
-  --shadow-line: 0 1px 0 rgba(230, 230, 230, 0.08);
+  --shadow-line: 0 1px 0
+    color-mix(in srgb, var(--color-white) 8%, transparent);
 }

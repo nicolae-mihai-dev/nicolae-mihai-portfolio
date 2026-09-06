@@ -10,21 +10,18 @@
 --------------------------------------------- */
 
 .inner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  align-items: start;
-  gap: clamp(6rem, 8vw, 11rem);
   padding-block: 9.5rem;
 }
 
 /* ---------------------------------------------
-   LEFT SIDE
+   SECTION INTRODUCTION
 --------------------------------------------- */
 
 .copy {
-  position: sticky;
-  top: calc(var(--site-header-height) - 0.6rem);
   min-width: 0;
+  max-width: 92rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .sectionLabel {
@@ -33,24 +30,18 @@
 }
 
 .sectionLabel::after {
-  display: block;
-  width: 3.6rem;
-  height: 0.2rem;
-  margin-top: 1.5rem;
-  background: currentColor;
-  content: "";
+  margin-inline: auto;
 }
 
 .headline {
-  max-width: 58rem;
-  margin: 0;
-  text-align: left;
+  max-width: 76rem;
+  margin: 0 auto;
   text-wrap: balance;
 }
 
 .intro {
-  max-width: 54rem;
-  margin: 3.5rem 0 0;
+  max-width: 68rem;
+  margin: 3.5rem auto 0;
 }
 
 /* ---------------------------------------------
@@ -59,14 +50,18 @@
 
 .strengths {
   display: grid;
-  gap: 1.5rem;
-  max-width: 48rem;
-  margin-top: 3.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem clamp(2.4rem, 4vw, 5.6rem);
+  max-width: 116rem;
+  margin: 4.8rem auto 7.2rem;
+  padding: 0;
+  list-style: none;
 }
 
 .strength {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.4rem;
   color: var(--color-label);
   font-size: var(--text-md);
@@ -78,7 +73,7 @@
   flex: 0 0 auto;
   width: 0.8rem;
   height: 0.8rem;
-  background: var(--color-brand-orange);
+  background: var(--color-brand-primary);
   border-radius: 50%;
 }
 
@@ -88,7 +83,8 @@
 
 .list {
   display: grid;
-  gap: 1.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
   min-width: 0;
   scroll-margin-top: var(--scroll-offset);
 }
@@ -96,11 +92,11 @@
 .item {
   position: relative;
   display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr) 5.5rem;
-  align-items: center;
-  gap: 2.6rem;
-  min-height: 15rem;
-  padding: 2.7rem 3.2rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 2rem;
+  min-height: 21rem;
+  padding: clamp(2.6rem, 3vw, 3.6rem);
   color: var(--color-heading);
   background: var(--color-white);
   border: 1px solid var(--color-rule);
@@ -117,7 +113,8 @@
 .item:hover {
   background: var(--color-white);
   border-color: var(--color-rule);
-  box-shadow: 0 1.8rem 4rem -3.2rem color-mix(in srgb, var(--color-heading) 32%, transparent);
+  box-shadow: 0 1.8rem 4rem -3.2rem
+    color-mix(in srgb, var(--color-heading) 32%, transparent);
 }
 
 /* ---------------------------------------------
@@ -128,9 +125,9 @@
   display: block;
   justify-self: start;
   min-width: 0;
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
   font-family: var(--font-heading);
-  font-size: clamp(6.4rem, 5vw, 8.4rem);
+  font-size: clamp(5.6rem, 4vw, 7.2rem);
   font-weight: var(--font-weight-strong);
   letter-spacing: var(--tracking-normal);
   line-height: var(--line-height-display);
@@ -145,14 +142,14 @@
 
 .item:nth-child(even) .number {
   color: var(--color-white);
-  -webkit-text-stroke: 1.5px var(--color-brand-orange);
+  -webkit-text-stroke: 1.5px var(--color-brand-primary);
   paint-order: stroke fill;
 }
 
 /* 01 + 03 + 05 = SOLID ORANGE */
 
 .item:nth-child(odd) .number {
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
   -webkit-text-stroke: 0;
 }
 
@@ -168,8 +165,8 @@
   margin: 0;
   padding: 0;
   color: var(--color-heading);
-  font-family: var(--font-sans);
-  font-size: var(--heading-md);
+  font-family: var(--font-ui);
+  font-size: var(--heading-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-normal);
   line-height: var(--line-height-ui);
@@ -192,12 +189,12 @@
   justify-self: end;
   width: auto;
   height: auto;
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
   background: transparent;
   border: 0;
   border-radius: 0;
   font-family: var(--font-symbol);
-  font-size: 4.8rem;
+  font-size: 4.2rem;
   font-weight: var(--font-weight-light);
   letter-spacing: var(--tracking-normal);
   line-height: var(--line-height-display);
@@ -208,7 +205,7 @@
 }
 
 .item:hover .arrow {
-  color: var(--color-brand-orange-hover);
+  color: var(--color-brand-primary);
   transform: translateX(0.8rem);
 }
 
@@ -216,30 +213,19 @@
    TABLET
 --------------------------------------------- */
 
-@media (max-width: 110rem) {
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 6rem;
-  }
-
-  .copy {
-    position: static;
-  }
-
-  .headline {
-    max-width: 76rem;
-  }
-
-  .intro {
-    max-width: 66rem;
-  }
-
+@media (max-width: 76rem) {
   .strengths {
-    max-width: 60rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 76rem;
+    margin-bottom: 6rem;
+  }
+
+  .strength:last-child {
+    grid-column: 1 / -1;
   }
 
   .item {
-    grid-template-columns: 9rem minmax(0, 1fr) 5rem;
+    min-height: 19rem;
   }
 }
 
@@ -247,19 +233,18 @@
    MOBILE
 --------------------------------------------- */
 
-@media (max-width: 70rem) {
+@media (max-width: 62rem) {
   .inner {
-    gap: 5rem;
     padding-block: 8rem;
   }
 
-  .headline {
-    font-size: var(--heading-section);
+  .list {
+    grid-template-columns: 1fr;
   }
 
   .item {
-    grid-template-columns: 7.2rem minmax(0, 1fr) 4rem;
-    gap: 1.8rem;
+    grid-template-columns: 6.4rem minmax(0, 1fr) 3.6rem;
+    gap: 1.6rem;
     min-height: auto;
     padding: 2.5rem 2.2rem;
   }
@@ -270,10 +255,6 @@
 
   .item h3 {
     font-size: var(--heading-sm);
-  }
-
-  .item p {
-    font-size: var(--text-xs);
   }
 
   .arrow {
@@ -304,7 +285,17 @@
   }
 
   .strengths {
+    grid-template-columns: 1fr;
     margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  .strength:last-child {
+    grid-column: auto;
+  }
+
+  .strength {
+    justify-content: flex-start;
   }
 
   .item {

@@ -11,8 +11,8 @@ const credibilityItems = [
     label: "Modern Frontend",
   },
   {
-    value: "Full-Stack Applications",
-    label: "Node.js · PostgreSQL · APIs",
+    value: "Product workflows",
+    label: "Forms · APIs · data",
   },
   {
     value: "WordPress & ACF",
@@ -26,7 +26,7 @@ const credibilityItems = [
 
 export function Hero() {
   return (
-    <section className={styles.hero} id="top">
+    <section className={styles.hero} aria-labelledby="hero-title" id="top">
       <div className={`container ${styles.inner}`}>
         <div className={styles.heroContent}>
           <div className={`${styles.identity} type-hero-meta`}>
@@ -34,23 +34,22 @@ export function Hero() {
             <span>WEB DEVELOPER</span>
           </div>
 
-          <h1 className={styles.title}>
-            <span>I build modern web applications,</span>
+          <h1 className={styles.title} id="hero-title">
+            <span>Web development for responsive websites,</span>
             <span>
-              platforms and digital products
+              product interfaces and CMS platforms
               <strong>.</strong>
             </span>
           </h1>
 
           <p className={`${styles.description} type-section-copy`}>
-            Web Developer working across React, Next.js, Node.js, WordPress,
-            HubSpot and modern integrations — delivering responsive websites,
-            web applications and data-driven products from implementation
-            through production.
+            I turn approved design, product and content requirements into
+            structured websites and web interfaces — from React and Next.js
+            builds to WordPress, HubSpot and carefully scoped integrations.
           </p>
 
           <div className={styles.actions}>
-            <Button href="#projects">View selected work</Button>
+            <Button href="#projects">View current work</Button>
 
             <Button href="#contact" variant="secondary">
               Get in touch

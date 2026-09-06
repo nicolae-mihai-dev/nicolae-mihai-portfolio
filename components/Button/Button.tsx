@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import styles from "./Button.module.css";
 
-type ButtonVariant = "primary" | "secondary" | "plain";
+type ButtonVariant = "primary" | "warm" | "secondary" | "plain";
 type ButtonSize = "small" | "medium";
 
 type SharedProps = {

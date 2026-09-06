@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 
 import {
@@ -30,118 +29,95 @@ import styles from "./Stack.module.css";
 type TechVisual = {
   icon?: IconType;
   monogram?: string;
-  color: string;
 };
 
 const techVisuals: Record<string, TechVisual> = {
   HTML: {
     icon: SiHtml5,
-    color: "#e34f26",
   },
 
   CSS: {
     icon: SiCss,
-    color: "#1572b6",
   },
 
   JavaScript: {
     icon: SiJavascript,
-    color: "#f7df1e",
   },
 
   TypeScript: {
     icon: SiTypescript,
-    color: "#3178c6",
   },
 
   React: {
     icon: SiReact,
-    color: "#61dafb",
   },
 
   "Next.js": {
     icon: SiNextdotjs,
-    color: "#111111",
   },
 
   "Node.js": {
     icon: SiNodedotjs,
-    color: "#339933",
   },
 
   Express: {
     icon: SiExpress,
-    color: "#111111",
   },
 
   PostgreSQL: {
     icon: SiPostgresql,
-    color: "#4169e1",
   },
 
   SQL: {
     monogram: "SQL",
-    color: "#336791",
   },
 
   "REST APIs": {
     monogram: "API",
-    color: "#238c8c",
   },
 
   WordPress: {
     icon: SiWordpress,
-    color: "#21759b",
   },
 
   "Advanced Custom Fields": {
     monogram: "ACF",
-    color: "#00bfa5",
   },
 
   PHP: {
     icon: SiPhp,
-    color: "#777bb4",
   },
 
   "HubSpot CMS": {
     icon: SiHubspot,
-    color: "#ff7a59",
   },
 
   WooCommerce: {
     icon: SiWoocommerce,
-    color: "#96588a",
   },
 
   Git: {
     icon: SiGit,
-    color: "#f05032",
   },
 
   GitHub: {
     icon: SiGithub,
-    color: "#181717",
   },
 
   Vercel: {
     icon: SiVercel,
-    color: "#111111",
   },
 
   "Browser DevTools": {
     icon: SiGooglechrome,
-    color: "#4285f4",
   },
 
   "Responsive Testing": {
     icon: TbDevices,
-    color: "#5e737c",
   },
 
   Figma: {
     icon: SiFigma,
-    color: "#f24e1e",
   },
 };
 
@@ -154,12 +130,8 @@ function Technology({ name }: { name: string }) {
 
   const Icon = visual.icon;
 
-  const style = {
-    "--tech-color": visual.color,
-  } as CSSProperties;
-
   return (
-    <div className={styles.technology} style={style}>
+    <div className={styles.technology}>
       <span className={styles.iconBox} aria-hidden="true">
         {Icon ? (
           <Icon className={styles.techIcon} />
@@ -175,14 +147,16 @@ function Technology({ name }: { name: string }) {
 
 export function Stack() {
   return (
-    <section className={styles.stack} id="experience">
+    <section className={styles.stack} aria-labelledby="stack-title" id="experience">
       <div className={`container ${styles.inner}`}>
         <header className={styles.header}>
-          <span className={`${styles.label} type-label type-label--accent`}>
+          <span
+            className={`${styles.label} type-label type-label--accent type-label--ruled type-label--centered`}
+          >
             Technologies &amp; Platforms
           </span>
 
-          <h2 className={`${styles.heading} type-section-title`}>
+          <h2 className={`${styles.heading} type-section-title`} id="stack-title">
             A practical stack for modern web products.
           </h2>
 
@@ -193,13 +167,9 @@ export function Stack() {
         </header>
 
         <div className={styles.grid}>
-          {stackGroups.map((group, index) => (
+          {stackGroups.map((group) => (
             <article className={styles.card} key={group.title}>
               <header className={styles.cardHeader}>
-                <span className={styles.cardNumber} aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
                 <h3>{group.title}</h3>
               </header>
 

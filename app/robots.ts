@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { siteInfo } from "@/data/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://nicolae-mihai-dev.netlify.app/sitemap.xml",
+    sitemap: `${siteInfo.url}/sitemap.xml`,
   };
 }

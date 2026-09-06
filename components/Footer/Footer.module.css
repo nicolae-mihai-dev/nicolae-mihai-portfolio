@@ -3,6 +3,11 @@
   background: var(--color-white);
 }
 
+.inverse {
+  color: var(--color-white);
+  background: var(--color-footer);
+}
+
 .inner {
   display: grid;
   grid-template-columns:
@@ -21,6 +26,20 @@
 .columnLabel {
   display: block;
   margin-bottom: 2rem;
+}
+
+.columnKicker {
+  display: block;
+  margin-bottom: 2rem;
+  color: var(--color-brand-primary);
+}
+
+.inverse .columnLabel {
+  color: var(--color-white);
+}
+
+.inverse .columnKicker {
+  color: var(--color-white);
 }
 
 /* ---------------------------------------------
@@ -42,7 +61,7 @@
 
 .logo .bracket,
 .logo .dot {
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
 }
 
 .logo .bracket {
@@ -53,7 +72,7 @@
 }
 
 .logo:hover {
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
 }
 
 .identity p {
@@ -98,16 +117,11 @@
 }
 
 .connectionLinks a span {
-  color: var(--color-brand-orange);
-  transition: transform 160ms ease;
+  color: var(--color-brand-primary);
 }
 
 .connectionLinks a:hover {
   color: var(--color-heading);
-}
-
-.connectionLinks a:hover span {
-  transform: translate(0.2rem, -0.2rem);
 }
 
 .pendingLink {
@@ -148,26 +162,49 @@
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  color: var(--color-body);
+  color: var(--color-heading);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: color 160ms ease;
 }
 
 .bottomMeta a span {
-  color: var(--color-brand-orange);
-  transition: transform 160ms ease;
+  color: var(--color-brand-primary);
 }
 
 .bottomMeta a:hover {
   color: var(--color-heading);
 }
 
+.inverse .logo,
+.inverse .logo .bracket,
+.inverse .logo .dot,
+.inverse .identity p,
+.inverse .connectionLinks a,
+.inverse .connectionLinks a span,
+.inverse .pendingLink,
+.inverse .availability,
+.inverse .bottomMeta,
+.inverse .bottomMeta a,
+.inverse .bottomMeta a span {
+  color: var(--color-white);
+}
+
+.inverse .connectionLinks a:hover,
+.inverse .bottomMeta a:hover {
+  color: var(--color-white);
+}
+
+.inverse .connections,
+.inverse .meta {
+  border-top-color: color-mix(in srgb, var(--color-white) 24%, transparent);
+}
+
 /* ---------------------------------------------
    TABLET
 --------------------------------------------- */
 
-@media (max-width: 95rem) {
+@media (max-width: 76rem) {
   .inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4.5rem 6rem;
@@ -186,7 +223,7 @@
    MOBILE
 --------------------------------------------- */
 
-@media (max-width: 60rem) {
+@media (max-width: 48rem) {
   .inner {
     grid-template-columns: 1fr;
     gap: 3.8rem;

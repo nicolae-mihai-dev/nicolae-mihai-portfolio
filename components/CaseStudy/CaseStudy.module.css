@@ -1,0 +1,361 @@
+.page {
+  background: var(--color-white);
+}
+
+.hero {
+  background: var(--color-white);
+}
+
+.heroInner {
+  padding-block: clamp(7.2rem, 10vw, 11.2rem);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(42rem, 0.95fr);
+  align-items: center;
+  gap: clamp(5rem, 8vw, 12rem);
+}
+
+.heroCopy h1 {
+  max-width: 11ch;
+  margin-top: 2.4rem;
+}
+
+.heroSummary {
+  max-width: 60rem;
+  margin-top: 2.8rem;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.4rem;
+  margin: 4rem 0 0;
+  padding: 2.4rem 0 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.facts > div {
+  min-width: 0;
+}
+
+.facts dt {
+  color: var(--color-brand-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--line-height-ui);
+  text-transform: uppercase;
+}
+
+.facts dd {
+  margin: 0.8rem 0 0;
+  color: var(--color-heading);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--line-height-body);
+}
+
+.heroVisual {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-section);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 16 / 12;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.heroVisual figcaption {
+  padding: 1.6rem 2rem;
+  color: var(--color-body);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-body);
+}
+
+.brief {
+  background: var(--color-section);
+}
+
+.briefInner,
+.decisionsInner,
+.outcomesInner {
+  padding-block: var(--section-pad-95);
+}
+
+.briefGrid {
+  display: block;
+}
+
+.briefGrid h2,
+.decisionsInner > h2,
+.outcomesInner > h2 {
+  max-width: 17ch;
+  margin-top: 2.4rem;
+}
+
+.briefCopy {
+  max-width: 62rem;
+  margin-top: 3.2rem;
+}
+
+.briefPoint {
+  max-width: 68rem;
+  margin: clamp(4rem, 6vw, 6.4rem) 0 0;
+  padding: clamp(3.2rem, 4vw, 4.8rem);
+  color: var(--color-brand-primary);
+  background: color-mix(
+    in srgb,
+    var(--color-brand-primary) 12%,
+    var(--color-white)
+  );
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-body);
+}
+
+.decisions {
+  background: var(--color-white);
+}
+
+.decisionList {
+  margin: clamp(4.8rem, 7vw, 7.2rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.decisionList li {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: clamp(2.4rem, 4vw, 5.6rem);
+  padding: 3.6rem 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.decisionList li:last-child {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.decisionNumber {
+  color: var(--color-brand-primary);
+  font-family: var(--font-ui);
+  font-size: var(--heading-sm);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-display);
+}
+
+.decisionList h3 {
+  margin: 0;
+  font-size: var(--heading-sm);
+  text-transform: none;
+}
+
+.decisionList p {
+  max-width: 70rem;
+  margin: 1.6rem 0 0;
+}
+
+.outcomes {
+  background: var(--color-section);
+}
+
+.outcomeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.4rem, 5vw, 6.4rem);
+  margin-top: clamp(4.8rem, 7vw, 7.2rem);
+}
+
+.deliverableCard,
+.qualityCard {
+  min-width: 0;
+  padding: clamp(3.2rem, 5vw, 5.6rem);
+  border-radius: var(--radius-md);
+}
+
+.deliverableCard {
+  --detail-accent: var(--color-brand-primary);
+  background: color-mix(
+    in srgb,
+    var(--detail-accent) 12%,
+    var(--color-white)
+  );
+}
+
+.qualityCard {
+  --detail-accent: var(--color-brand-orange);
+  background: color-mix(
+    in srgb,
+    var(--detail-accent) 12%,
+    var(--color-white)
+  );
+}
+
+.deliverableCard h3,
+.qualityCard h3 {
+  margin: 0;
+  font-size: var(--heading-md);
+  text-transform: none;
+}
+
+.deliverableCard ul,
+.qualityCard ul {
+  display: grid;
+  gap: 1.8rem;
+  margin: 3.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deliverableCard li,
+.qualityCard li {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.2rem;
+  color: var(--color-heading);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+}
+
+.deliverableCard svg {
+  color: var(--color-brand-primary);
+}
+
+.qualityCard svg {
+  color: var(--color-heading);
+}
+
+.deliverableCard svg,
+.qualityCard svg {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.1rem;
+}
+
+.cta {
+  background: var(--color-white);
+}
+
+.ctaInner {
+  padding-block: var(--section-pad-95);
+}
+
+.ctaCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: clamp(3.2rem, 5vw, 6.4rem);
+  color: var(--color-white);
+  background: var(--color-footer);
+  border-radius: var(--radius-md);
+}
+
+.ctaCard h2 {
+  max-width: 20ch;
+  margin-top: 2.4rem;
+  color: var(--color-white);
+}
+
+.ctaCard a {
+  flex: 0 0 auto;
+  gap: 2.4rem;
+}
+
+.ctaCard svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 76rem) {
+  .heroGrid {
+    gap: clamp(3.2rem, 5vw, 5.6rem);
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 62rem) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroVisual {
+    width: min(100%, 78rem);
+  }
+
+  .heroInner,
+  .briefInner,
+  .decisionsInner,
+  .outcomesInner,
+  .ctaInner {
+    padding-block: var(--section-pad-mobile);
+  }
+
+  .heroGrid {
+    gap: 4.8rem;
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .outcomeGrid {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+  .ctaCard {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 48rem) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+
+  .decisionList li {
+    grid-template-columns: 4.8rem minmax(0, 1fr);
+    gap: 1.6rem;
+    padding-block: 2.8rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  .heroCopy h1 {
+    max-width: 13ch;
+  }
+
+  .deliverableCard,
+  .qualityCard {
+    padding: 3.2rem 2.4rem;
+  }
+
+  .ctaCard {
+    gap: 3.2rem;
+    padding: 3.2rem 2.4rem;
+  }
+
+  .ctaCard a {
+    width: 100%;
+  }
+}

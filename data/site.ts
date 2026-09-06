@@ -1,16 +1,3 @@
-export type NavLink = {
-  label: string;
-  href: string;
-};
-
-export type Service = {
-  number: string;
-  title: string;
-  description: string;
-  href: `/services/${string}`;
-  featured?: boolean;
-};
-
 export type ProjectStatus = "Live" | "In progress" | "Planned";
 
 export type ProjectLink = {
@@ -37,80 +24,16 @@ export type ContactLink = {
 };
 
 export const siteInfo = {
-  name: "NICOLAE MIHAI",
-  role: "NICOLAE MIHAI",
-  logo: "NM.DEV",
-  positioning:
-    "Web Developer focused on React, WordPress, HubSpot & modern landing pages.",
-  heroTitle: "WEB DEVELOPER\nFOR MODERN\nWEBSITES",
-  heroIntro:
-    "I build polished websites, landing pages and CMS-driven sections with React, WordPress and HubSpot - shaped around clear structure, strong visual implementation and content that is easy to manage.",
-  heroNote:
-    "Selected self-initiated projects, documented with live demos, GitHub repos and implementation notes.",
+  url: "https://nicolae-mihai-dev.netlify.app",
   email: "nicolae.mihai.dev@gmail.com",
-  ctaLabel: "Work With Me",
 };
-
-export const navLinks: NavLink[] = [
-  { label: "Services", href: "/#services" },
-  { label: "Projects", href: "/#projects" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-];
-
-export const services: Service[] = [
-  {
-    number: "01",
-    title: "Landing Pages & Business Websites",
-    description:
-      "Marketing pages, personal websites and service pages built with strong layout, responsive details and clear content structure.",
-    href: "/services/figma-to-website",
-    featured: true,
-  },
-  {
-    number: "02",
-    title: "React / Next.js Front-end Builds",
-    description:
-      "Component-based interfaces using React, Next.js and TypeScript, suitable for landing pages, portfolio builds, dashboards and API-connected sections.",
-    href: "/services/react-nextjs-developer",
-    featured: true,
-  },
-  {
-    number: "03",
-    title: "WordPress & ACF Development",
-    description:
-      "Custom WordPress structures with editable content areas, flexible sections and admin-friendly fields for content-driven websites.",
-    href: "/services/wordpress-acf-developer",
-  },
-  {
-    number: "04",
-    title: "HubSpot CMS Landing Pages",
-    description:
-      "HubSpot pages and reusable CMS modules for marketing teams that need campaign pages, content blocks and controlled editing.",
-    href: "/services/hubspot-cms-developer",
-  },
-  {
-    number: "05",
-    title: "WooCommerce Product Experiences",
-    description:
-      "Product pages, store layouts and front-end improvements for WooCommerce websites that need a cleaner buying experience.",
-    href: "/services/woocommerce-developer",
-  },
-  {
-    number: "06",
-    title: "Responsive Improvements & Website Updates",
-    description:
-      "Layout fixes, CSS cleanup, mobile improvements and front-end refinements for existing websites that need better presentation.",
-    href: "/services/responsive-website-fixes",
-  },
-];
 
 export const projects: Project[] = [
   {
     title: "React / Next.js Portfolio Website",
     description:
       "A personal portfolio built with Next.js, TypeScript and custom CSS, focused on editorial layout, responsive structure and a polished presentation system.",
-    tags: ["Next.js", "TypeScript", "CSS Modules", "Vercel"],
+    tags: ["Next.js", "TypeScript", "CSS Modules", "Netlify"],
     links: [
       { label: "Live Demo" },
       { label: "GitHub" },
@@ -229,12 +152,3 @@ export const contactLinks: ContactLink[] = [
     href: "https://www.linkedin.com/in/nicolae-mihai-311b6042a/",
   },
 ];
-
-export const futureRoutes = [
-  "/services/react-nextjs-developer",
-  "/services/wordpress-acf-developer",
-  "/services/hubspot-cms-developer",
-  "/services/responsive-website-fixes",
-  "/services/figma-to-website",
-  "/services/woocommerce-developer",
-] as const;

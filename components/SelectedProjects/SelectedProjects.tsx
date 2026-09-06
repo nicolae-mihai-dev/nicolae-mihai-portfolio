@@ -1,67 +1,95 @@
 import { projects } from "@/data/site";
 import styles from "./SelectedProjects.module.css";
 
+const showPlannedResources = true;
+
 function ProjectLinks({
   links,
+  projectTitle,
 }: {
   links: (typeof projects)[number]["links"];
+  projectTitle: string;
 }) {
+  const hasAvailableLinks = links.some((link) => link.href);
+
+  if (!hasAvailableLinks && !showPlannedResources) {
+    return null;
+  }
+
   return (
-    <nav className={styles.projectLinks} aria-label="Project links">
+    <ul className={styles.projectLinks} aria-label={`${projectTitle} resources`}>
       {links.map((link) => {
         const content = (
           <>
             <span>{link.label}</span>
             <span className={styles.linkArrow} aria-hidden="true">
-              ↗
+              {"\u2197"}
             </span>
           </>
         );
 
         if (!link.href) {
+          if (!showPlannedResources) {
+            return null;
+          }
+
           return (
-            <span className={`${styles.projectLink} type-action`} key={link.label}>
-              {content}
-            </span>
+            <li key={link.label}>
+              <span
+                aria-label={`${link.label} — link coming soon`}
+                className={`${styles.projectLink} type-action`}
+              >
+                {content}
+              </span>
+            </li>
           );
         }
 
         const isExternal = link.href.startsWith("http");
 
         return (
-          <a
-            className={`${styles.projectLink} type-action`}
-            href={link.href}
-            key={link.label}
-            rel={isExternal ? "noopener noreferrer" : undefined}
-            target={isExternal ? "_blank" : undefined}
-          >
-            {content}
-          </a>
+          <li key={link.label}>
+            <a
+              className={`${styles.projectLink} type-action`}
+              href={link.href}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              target={isExternal ? "_blank" : undefined}
+            >
+              {content}
+            </a>
+          </li>
         );
       })}
-    </nav>
+    </ul>
   );
 }
 
 export function SelectedProjects() {
   return (
-    <section className={styles.projects} id="projects">
+    <section
+      className={styles.projects}
+      aria-labelledby="selected-projects-title"
+      id="projects"
+    >
       <div className={`container ${styles.inner}`}>
         <header className={styles.heading}>
-          <span className={`${styles.label} type-label type-label--accent`}>
+          <span
+            className={`${styles.label} type-label type-label--accent type-label--ruled type-label--centered`}
+          >
             Selected Work
           </span>
 
-          <h2 className={`${styles.title} type-section-title`}>
-            Products built around real functionality and production-quality
-            implementation<span>.</span>
+          <h2
+            className={`${styles.title} type-section-title`}
+            id="selected-projects-title"
+          >
+            Current work and focused builds in development<span>.</span>
           </h2>
 
           <p className={`${styles.intro} type-section-copy`}>
-            Web applications, digital products and CMS implementations built
-            around maintainable architecture, performance and real product
-            requirements.
+            A transparent view of the portfolio and focused builds currently in
+            development. Each item is marked by its real stage; public links
+            appear only when there is something useful to review.
           </p>
         </header>
 
@@ -110,7 +138,7 @@ export function SelectedProjects() {
                   </ul>
                 </div>
 
-                <ProjectLinks links={project.links} />
+                <ProjectLinks links={project.links} projectTitle={project.title} />
               </article>
             );
           })}

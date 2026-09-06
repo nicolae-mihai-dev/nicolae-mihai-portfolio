@@ -1,7 +1,11 @@
 import { contactLinks, siteInfo } from "@/data/site";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+type FooterProps = {
+  variant?: "default" | "inverse";
+};
+
+export function Footer({ variant = "default" }: FooterProps) {
   const year = new Date().getFullYear();
 
   const professionalLinks = contactLinks.filter(
@@ -9,7 +13,11 @@ export function Footer() {
   );
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={`${styles.footer} ${
+        variant === "inverse" ? styles.inverse : ""
+      }`}
+    >
       <div className={`container ${styles.inner}`}>
         {/* LEFT */}
         <div className={styles.identity}>
@@ -24,7 +32,9 @@ export function Footer() {
 
         {/* CENTER */}
         <div className={styles.connections}>
-          <span className={`${styles.columnLabel} type-label type-label--accent`}>
+          <span
+            className={`${styles.columnLabel} type-label type-label--accent type-label--ruled`}
+          >
             Connect
           </span>
 
@@ -56,7 +66,7 @@ export function Footer() {
 
         {/* RIGHT */}
         <div className={styles.meta}>
-          <span className={`${styles.columnLabel} type-label type-label--accent`}>
+          <span className={`${styles.columnKicker} type-kicker`}>
             Availability
           </span>
 

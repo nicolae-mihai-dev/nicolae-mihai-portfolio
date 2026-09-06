@@ -1,398 +1,544 @@
 import { siteInfo } from "@/data/site";
 
-export type ServicePageTheme = "sky" | "peach" | "ivory" | "dark";
-export type ServicePageVariant = "split" | "editorial" | "timeline" | "dark-panel";
+export const serviceSlugs = [
+  "react-nextjs-developer",
+  "figma-to-website",
+  "api-ai-integrations",
+  "wordpress-acf-developer",
+  "hubspot-cms-developer",
+  "responsive-website-fixes",
+  "woocommerce-developer",
+] as const;
 
-export type ServicePageLink = {
-  label: string;
-  href: `/services/${string}`;
+export type ServiceSlug = (typeof serviceSlugs)[number];
+
+export type ServiceCard = {
+  number: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: "";
 };
 
 export type ServiceExample = {
+  label: string;
   title: string;
   description: string;
-  status: "In progress" | "Planned";
+  isRepresentative?: boolean;
+  caseStudyHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export type ServicePageData = {
-  slug: string;
+  slug: ServiceSlug;
   metaTitle: string;
   metaDescription: string;
-  theme: ServicePageTheme;
-  variant: ServicePageVariant;
   eyebrow: string;
   title: string;
   heroText: string;
-  angleTitle: string;
-  angleText: string;
+  card: ServiceCard;
+  heroOutcomes: string[];
+  overviewTitle: string;
+  overviewText: string;
   includes: string[];
   goodFit: string[];
+  processIntro: string;
   approach: string[];
   examples: ServiceExample[];
   ctaTitle: string;
-  related: ServicePageLink[];
+  relatedServiceSlugs: ServiceSlug[];
 };
+
+const serviceProjectPlaceholder = {
+  imageSrc: "/images/service-project-placeholder.png",
+  imageAlt: "",
+} satisfies Required<Pick<ServiceExample, "imageSrc" | "imageAlt">>;
 
 export const servicePages: ServicePageData[] = [
   {
     slug: "react-nextjs-developer",
-    metaTitle: "React / Next.js Developer | Nicolae Mihai",
+    metaTitle: "React & Next.js Developer | Nicolae Mihai",
     metaDescription:
-      "React, Next.js and TypeScript front-end implementation for landing pages, reusable sections, API-connected UI and dashboard-style interfaces.",
-    theme: "sky",
-    variant: "split",
-    eyebrow: "React / Next.js Developer",
-    title: "React / Next.js Front-end Builds",
+      "React, Next.js and TypeScript development for responsive websites, reusable interfaces and production-ready front-end systems.",
+    eyebrow: "React / Next.js Development",
+    title: "React & Next.js Development",
     heroText:
-      "I build polished front-end interfaces with React, Next.js and TypeScript - from landing pages and reusable sections to API-connected UI and dashboard-style experiences.",
-    angleTitle: "A credible start for polished pages, with room to grow.",
-    angleText:
-      "This direction starts with strong landing pages and front-end implementation, then extends into structured interface work when a project needs components, states, data and deployment-ready organization.",
+      "I build responsive React and Next.js interfaces with TypeScript - clear component systems, accessible states and maintainable front-end code for websites and web applications.",
+    card: {
+      number: "01",
+      title: "React / Next.js Developer",
+      description:
+        "Reusable, responsive interfaces for websites and web applications.",
+      imageSrc: "/images/services/react-nextjs-development.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Reusable component system",
+      "Responsive, accessible UI",
+      "Deployment-ready handoff",
+    ],
+    overviewTitle: "Front-end systems that stay clear as they grow.",
+    overviewText:
+      "I turn product requirements into a practical interface structure, so new pages, states and features do not become a collection of one-off fixes.",
     includes: [
-      "React and Next.js landing pages",
-      "Reusable component sections",
+      "React and Next.js pages",
+      "Reusable UI components",
       "TypeScript project structure",
-      "Responsive implementation",
-      "API-connected content sections",
-      "Dashboard-style interfaces",
-      "Forms, filters and UI states",
-      "Vercel deployment",
+      "Forms, filters and interface states",
+      "Data and API interfaces where needed",
+      "Responsive and keyboard QA",
+      "Performance-focused front-end polish",
+      "Production build and deployment handoff",
     ],
     goodFit: [
-      "Service websites that need a modern front-end",
-      "Landing pages that need strong layout and performance",
-      "Dashboards or admin-style interfaces",
-      "Portfolio/product-style builds",
-      "Projects that need clean component structure",
+      "New websites or product interfaces with an approved scope",
+      "Landing pages that need a reusable component structure",
+      "Dashboards and internal tools with clear interface states",
+      "Existing React or Next.js projects that need cleanup or expansion",
     ],
+    processIntro:
+      "The structure follows the actual pages, interface states and data needs — not a pattern library created in isolation.",
     approach: [
-      "Plan the page structure and content flow",
-      "Build reusable components",
-      "Implement responsive states",
-      "Connect data or APIs where needed",
-      "Prepare live preview and handoff notes",
+      "Define the pages, content structure and interface states",
+      "Build reusable components with a clear TypeScript foundation",
+      "Connect approved data, forms or integrations where needed",
+      "Verify responsive behavior, accessibility basics and the production build",
     ],
     examples: [
       {
-        title: "React / Next.js Portfolio Website",
+        label: "Public portfolio build",
+        ...serviceProjectPlaceholder,
+        title: "Nicolae Mihai - Developer Portfolio",
         description:
-          "An editorial portfolio build focused on layout system, responsive states and a custom visual language.",
-        status: "In progress",
-      },
-      {
-        title: "React Business Dashboard",
-        description:
-          "A planned interface study for filters, cards, charts, forms and API-driven content.",
-        status: "Planned",
+          "The site you are viewing: a Next.js and TypeScript build with data-driven service pages, responsive layouts, SEO configuration and a protected contact flow.",
       },
     ],
-    ctaTitle: "Need a React or Next.js page built with clean structure?",
-    related: [
-      { label: "Figma to Website", href: "/services/figma-to-website" },
-      { label: "Responsive Improvements", href: "/services/responsive-website-fixes" },
+    ctaTitle: "Need a React or Next.js front end built cleanly?",
+    relatedServiceSlugs: [
+      "figma-to-website",
+      "api-ai-integrations",
+      "responsive-website-fixes",
+    ],
+  },
+  {
+    slug: "figma-to-website",
+    metaTitle: "Figma to Website Developer | Nicolae Mihai",
+    metaDescription:
+      "Figma to responsive website implementation using semantic HTML, CSS, React, Next.js or WordPress.",
+    eyebrow: "Figma to Website",
+    title: "Figma to Responsive Website",
+    heroText:
+      "I translate approved Figma designs into responsive HTML, CSS, React, Next.js or WordPress implementations - with reusable patterns and realistic behavior beyond one desktop artboard.",
+    card: {
+      number: "02",
+      title: "Figma to Website",
+      description:
+        "Accurate design implementation with responsive behavior built in.",
+      imageSrc: "/images/services/figma-to-website.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Clear design translation",
+      "Responsive component patterns",
+      "Clean front-end handoff",
+    ],
+    overviewTitle: "From approved design to a website that works.",
+    overviewText:
+      "A strong implementation starts with the design system, assets and interface states - not by copying a single static screen.",
+    includes: [
+      "Design-system and asset review",
+      "Semantic HTML and maintainable CSS",
+      "Responsive page variants",
+      "Reusable page sections and components",
+      "Typography, spacing and layout matching",
+      "Interaction and focus states",
+      "Implementation in the agreed stack",
+      "Cross-device QA and handoff",
+    ],
+    goodFit: [
+      "Designers who need dependable development support",
+      "Landing pages ready for implementation",
+      "Business or portfolio websites with approved designs",
+      "Existing products that need new pages built from Figma",
+    ],
+    processIntro:
+      "Implementation starts with the source design, available assets and responsive rules, so the result works beyond one desktop artboard.",
+    approach: [
+      "Review the design system, assets and required states",
+      "Define responsive rules and reusable implementation patterns",
+      "Build the interface in the agreed technology",
+      "Test visual details, interactions and narrow-screen behavior",
+    ],
+    examples: [
+      {
+        label: "Portfolio implementation",
+        ...serviceProjectPlaceholder,
+        title: "Nicolae Mihai - Developer Portfolio",
+        description:
+          "A Figma-informed portfolio implementation with structured typography, responsive layout rules and deliberate interaction states.",
+      },
+    ],
+    ctaTitle: "Have a design ready to become a working website?",
+    relatedServiceSlugs: [
+      "react-nextjs-developer",
+      "wordpress-acf-developer",
+      "hubspot-cms-developer",
+    ],
+  },
+  {
+    slug: "api-ai-integrations",
+    metaTitle: "API & AI Integrations Developer | Nicolae Mihai",
+    metaDescription:
+      "Practical API and AI integrations for web applications, including secure server-side routes, validated inputs and clear user-facing states.",
+    eyebrow: "API & AI Integrations",
+    title: "API & AI Integrations for Web Products",
+    heroText:
+      "I connect web applications with external APIs, structured data and AI features when they solve a defined product task - with clear states, validation and maintainable server-side handling.",
+    card: {
+      number: "03",
+      title: "API & AI Integrations",
+      description:
+        "Practical integrations with validated inputs and reliable user-facing states.",
+      imageSrc: "/images/services/api-ai-integrations.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Clear integration scope",
+      "Safe server-side handling",
+      "Useful product states",
+    ],
+    overviewTitle: "Integrations should make a product more useful, not more fragile.",
+    overviewText:
+      "The focus is a reliable flow from user input to external service and back to the interface, with the validation, feedback and error handling the workflow actually needs.",
+    includes: [
+      "External API discovery and integration planning",
+      "Secure server-side API routes",
+      "Validated forms, webhooks and data flows",
+      "AI feature integration for defined product tasks",
+      "Loading, error and empty states",
+      "Input validation and rate-aware handling",
+      "Environment-variable and deployment configuration",
+      "Implementation notes and handoff",
+    ],
+    goodFit: [
+      "Products that need external data or service connections",
+      "Existing workflows that need a reliable integration layer",
+      "Teams evaluating an AI feature with a clear user problem",
+      "Web applications that need better feedback around asynchronous actions",
+    ],
+    processIntro:
+      "The work is shaped around the user action, service constraints and the states needed when an external request succeeds, fails or takes time.",
+    approach: [
+      "Define the user outcome, API constraints and data flow",
+      "Build the server-side boundary and validated request handling",
+      "Connect the interface with clear loading and error states",
+      "Test the expected path, failure cases and deployment configuration",
+    ],
+    examples: [
+      {
+        label: "Portfolio contact flow",
+        ...serviceProjectPlaceholder,
+        title: "Protected Portfolio Contact Flow",
+        description:
+          "A contact flow with server-side validation, spam protection, Turnstile verification, clear client feedback and email delivery through a dedicated API route.",
+      },
+    ],
+    ctaTitle: "Need an integration that feels reliable in the product?",
+    relatedServiceSlugs: [
+      "react-nextjs-developer",
+      "hubspot-cms-developer",
+      "responsive-website-fixes",
     ],
   },
   {
     slug: "wordpress-acf-developer",
     metaTitle: "WordPress & ACF Developer | Nicolae Mihai",
     metaDescription:
-      "WordPress and ACF development for editable sections, flexible content layouts, custom theme structure and responsive website improvements.",
-    theme: "peach",
-    variant: "editorial",
-    eyebrow: "WordPress & ACF Developer",
-    title: "WordPress & ACF Development",
+      "Custom WordPress and ACF development for reusable content structures, editable sections and responsive front-end implementation.",
+    eyebrow: "WordPress / ACF Development",
+    title: "Editable WordPress Builds with ACF",
     heroText:
-      "I build WordPress structures with editable sections, custom fields and admin-friendly content controls - so pages can be updated without touching code.",
-    angleTitle: "From front-end refinements to structured editable builds.",
-    angleText:
-      "WordPress work can begin with layout updates and responsive improvements, or move into ACF-driven sections, flexible content and custom theme structure for content-driven pages.",
+      "I build custom WordPress pages and ACF content structures that give editors clear controls without losing responsive layout or front-end quality.",
+    card: {
+      number: "04",
+      title: "WordPress & ACF Development",
+      description:
+        "Editable content structures with a controlled responsive front end.",
+      imageSrc: "/images/services/wordpress-acf-development.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Structured content editing",
+      "Reusable page sections",
+      "Responsive WordPress build",
+    ],
+    overviewTitle: "Flexible for editors, structured for development.",
+    overviewText:
+      "The aim is a website editors can update confidently, with a content model that protects the visual system instead of exposing every layout decision.",
     includes: [
-      "WordPress page sections",
-      "Editable ACF fields",
-      "Flexible content layouts",
-      "Custom theme structure",
-      "Responsive WordPress improvements",
-      "Content blocks for non-technical editing",
-      "CSS and layout refinements",
-      "WooCommerce front-end improvements when needed",
+      "Custom templates and page sections",
+      "ACF field groups and structured content",
+      "Flexible, reusable content patterns",
+      "Editor-friendly content controls",
+      "Responsive front-end implementation",
+      "Theme-level front-end fixes and cleanup",
+      "Content structures for non-technical editing",
+      "WooCommerce front-end support where relevant",
     ],
     goodFit: [
-      "Websites that need easier editing",
-      "WordPress pages that need better layout",
-      "Existing websites that need front-end cleanup",
-      "Businesses that need structured content sections",
-      "Projects where design must become an editable WordPress build",
+      "Businesses that need easier website editing",
+      "Existing WordPress sites that need cleaner structure",
+      "Designs that need to become editable WordPress pages",
+      "Content-heavy websites that need reusable sections",
     ],
+    processIntro:
+      "The content model is agreed before templates are built, so editors have useful controls without being asked to make layout decisions.",
     approach: [
-      "Review the current website or design",
-      "Define editable fields and section logic",
-      "Build the front-end structure",
-      "Connect ACF fields cleanly",
-      "Test responsive layouts and admin editing",
+      "Review the content, design and editing requirements",
+      "Define ACF fields and reusable section patterns",
+      "Build templates and connect the responsive front end",
+      "Test both the editor workflow and the public website",
     ],
     examples: [
       {
-        title: "WordPress + ACF Custom Theme",
+        label: "Representative scope",
+        isRepresentative: true,
+        ...serviceProjectPlaceholder,
+        title: "Editable WordPress & ACF Build",
         description:
-          "A planned WordPress implementation around flexible sections, editable fields and content handoff notes.",
-        status: "Planned",
-      },
-      {
-        title: "WooCommerce Product Website",
-        description:
-          "A related WordPress direction focused on product presentation and front-end polish.",
-        status: "Planned",
+          "A typical WordPress and ACF scope: structured fields, editable sections and responsive front-end implementation that protects the original page system.",
       },
     ],
-    ctaTitle: "Need WordPress sections that are easier to manage?",
-    related: [
-      { label: "WooCommerce Developer", href: "/services/woocommerce-developer" },
-      { label: "Figma to Website", href: "/services/figma-to-website" },
+    ctaTitle: "Need a WordPress build that stays easy to edit?",
+    relatedServiceSlugs: [
+      "woocommerce-developer",
+      "figma-to-website",
+      "responsive-website-fixes",
     ],
   },
   {
     slug: "hubspot-cms-developer",
     metaTitle: "HubSpot CMS Developer | Nicolae Mihai",
     metaDescription:
-      "HubSpot CMS landing pages and reusable modules for campaign pages, editable content blocks and marketing website structure.",
-    theme: "ivory",
-    variant: "dark-panel",
-    eyebrow: "HubSpot CMS Developer",
-    title: "HubSpot CMS Landing Pages",
+      "HubSpot CMS landing pages and reusable modules for responsive campaign pages, structured content editing and marketing websites.",
+    eyebrow: "HubSpot CMS Development",
+    title: "HubSpot CMS Landing Pages & Modules",
     heroText:
-      "I build HubSpot CMS landing pages and reusable modules for marketing websites that need campaign-ready sections and controlled content editing.",
-    angleTitle: "Marketing pages with controlled editing.",
-    angleText:
-      "HubSpot work is about giving campaign pages a strong visual structure while keeping content controls clear enough for marketing updates, repeated sections and future page variations.",
+      "I build responsive HubSpot CMS pages and reusable modules that give marketing teams defined editing controls without breaking the design system.",
+    card: {
+      number: "05",
+      title: "HubSpot CMS Development",
+      description:
+        "Campaign pages and reusable modules with controlled editing.",
+      imageSrc: "/images/services/hubspot-cms-development.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Reusable custom modules",
+      "Defined editing controls",
+      "Campaign-ready pages",
+    ],
+    overviewTitle: "Marketing pages that stay easy to update.",
+    overviewText:
+      "Each module is designed as a reusable building block, with the content controls an editor actually needs and the responsive behavior the design requires.",
     includes: [
-      "HubSpot landing page sections",
-      "Reusable CMS modules",
-      "Campaign page layouts",
-      "Editable content blocks",
-      "Responsive HubSpot implementation",
-      "HubL-ready structure",
-      "Module documentation",
-      "Handoff notes for content updates",
+      "HubSpot landing pages",
+      "Reusable custom modules",
+      "Campaign page and template patterns",
+      "Configured editable content fields",
+      "HubL templates and module markup where needed",
+      "Responsive implementation and QA",
+      "Reusable section patterns",
+      "Content-editor handoff",
     ],
     goodFit: [
-      "Marketing teams that need campaign pages",
-      "Businesses using HubSpot CMS",
-      "Landing pages that need editable sections",
-      "Websites that need reusable content modules",
-      "Teams that want content control without breaking layout",
+      "Marketing teams building campaign pages",
+      "Businesses already using HubSpot CMS",
+      "Pages that need controlled content editing",
+      "Teams that need reusable marketing modules",
     ],
+    processIntro:
+      "Module fields reflect the changes a marketing team needs to make often, while the implementation keeps the page system intact.",
     approach: [
-      "Define campaign sections and content needs",
-      "Build reusable module structure",
-      "Implement responsive layout",
-      "Keep editing controls clear",
-      "Prepare handoff notes",
+      "Define the campaign goal and editable content fields",
+      "Build reusable module and page patterns",
+      "Implement responsive behavior and content controls",
+      "Test the editor workflow and prepare the handoff",
     ],
     examples: [
       {
-        title: "HubSpot CMS Landing Page",
+        label: "Representative scope",
+        isRepresentative: true,
+        ...serviceProjectPlaceholder,
+        title: "HubSpot CMS Page & Module Scope",
         description:
-          "A planned landing page system with reusable modules, controlled editing and campaign-focused sections.",
-        status: "Planned",
-      },
-      {
-        title: "Figma to Website Implementation",
-        description:
-          "A related implementation path when a marketing design needs to become a working page.",
-        status: "Planned",
+          "A typical HubSpot scope: campaign pages, reusable modules and editor-controlled content designed around the publishing workflow.",
       },
     ],
     ctaTitle: "Need a HubSpot landing page or reusable CMS module?",
-    related: [
-      { label: "Figma to Website", href: "/services/figma-to-website" },
-      { label: "React / Next.js Developer", href: "/services/react-nextjs-developer" },
+    relatedServiceSlugs: [
+      "figma-to-website",
+      "react-nextjs-developer",
+      "api-ai-integrations",
     ],
   },
   {
     slug: "responsive-website-fixes",
-    metaTitle: "Responsive Website Improvements | Nicolae Mihai",
+    metaTitle:
+      "Responsive Website Fixes & Front-end Improvements | Nicolae Mihai",
     metaDescription:
-      "Responsive website improvements, CSS cleanup, mobile layout fixes and front-end refinements for existing websites.",
-    theme: "dark",
-    variant: "timeline",
-    eyebrow: "Responsive Website Fixes",
-    title: "Responsive Website Improvements",
+      "Responsive website fixes, CSS cleanup, mobile layout improvements and front-end polish for existing websites.",
+    eyebrow: "Responsive Website Improvements",
+    title: "Responsive Website Fixes & Front-end Polish",
     heroText:
-      "I improve existing websites by fixing layout issues, mobile problems, spacing inconsistencies and front-end details that affect presentation and usability.",
-    angleTitle: "Better presentation without unnecessary rebuilds.",
-    angleText:
-      "This work focuses on the front-end details that make an existing page feel more stable: layout, spacing, typography, navigation, forms and responsive behavior across devices.",
+      "I audit existing pages at real viewport sizes and fix layout, readability, navigation and interaction issues without rebuilding what already works.",
+    card: {
+      number: "06",
+      title: "Responsive Website Improvements",
+      description:
+        "Focused layout, usability and front-end fixes across real devices.",
+      imageSrc: "/images/services/responsive-website-improvements.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Clearer layout hierarchy",
+      "Usable narrow-screen states",
+      "Focused implementation changes",
+    ],
+    overviewTitle: "Improve what is already there.",
+    overviewText:
+      "The right fix addresses the layout rule or component constraint behind the issue, rather than merely shrinking a desktop page.",
     includes: [
-      "Mobile layout improvements",
-      "Tablet and desktop refinements",
-      "CSS cleanup",
-      "Broken section fixes",
-      "Spacing and typography adjustments",
-      "Button and form styling",
-      "Navigation fixes",
-      "Front-end polish for existing websites",
+      "Viewport audit across key screen sizes",
+      "Mobile, tablet and desktop fixes",
+      "Flexible layout and typography improvements",
+      "Navigation and form-state fixes",
+      "CSS cleanup and component refinements",
+      "Content overflow and alignment repairs",
+      "Cross-browser front-end QA",
+      "Clear implementation notes",
     ],
     goodFit: [
-      "Pages that look broken on mobile",
-      "Websites with inconsistent spacing",
-      "Sections that need visual cleanup",
-      "WordPress or static pages that need CSS improvements",
-      "Existing landing pages that need better presentation",
+      "Websites that break on smaller screens",
+      "Pages with inconsistent spacing or alignment",
+      "Existing websites that need visual cleanup",
+      "WordPress, CMS or static sites that need focused front-end fixes",
     ],
+    processIntro:
+      "The audit starts by reproducing the real issue, then traces it to the layout rule or component constraint behind the visible symptom.",
     approach: [
-      "Review the page across screen sizes",
-      "Identify layout and CSS issues",
-      "Fix the structure without unnecessary rebuilds",
-      "Test responsive behavior",
-      "Document what changed",
+      "Reproduce the issue across representative viewport sizes",
+      "Identify the structural cause rather than only the symptom",
+      "Apply focused component and CSS changes",
+      "Retest the key screens, interactions and content states",
     ],
     examples: [
       {
-        title: "Responsive Improvements & Website Updates",
+        label: "Representative scope",
+        isRepresentative: true,
+        ...serviceProjectPlaceholder,
+        title: "Responsive Improvements & Front-end Maintenance",
         description:
-          "A service direction focused on layout cleanup, mobile behavior and front-end refinements for existing pages.",
-        status: "In progress",
-      },
-      {
-        title: "WordPress + ACF Custom Theme",
-        description:
-          "A planned WordPress build where responsive polish and editable structure meet.",
-        status: "Planned",
+          "A typical front-end improvement scope: audit and repair of layout, navigation, forms and content overflow at the viewports people actually use.",
       },
     ],
-    ctaTitle: "Need your website to look better across devices?",
-    related: [
-      { label: "WordPress & ACF Developer", href: "/services/wordpress-acf-developer" },
-      { label: "React / Next.js Developer", href: "/services/react-nextjs-developer" },
-    ],
-  },
-  {
-    slug: "figma-to-website",
-    metaTitle: "Figma to Website Implementation | Nicolae Mihai",
-    metaDescription:
-      "Figma to website implementation with responsive HTML, CSS, JavaScript, React, Next.js or WordPress structure.",
-    theme: "sky",
-    variant: "editorial",
-    eyebrow: "Figma to Website",
-    title: "Figma to Website Implementation",
-    heroText:
-      "I turn Figma designs into responsive web pages with clean HTML, CSS, JavaScript, React or WordPress structure depending on the project needs.",
-    angleTitle: "Design files turned into working pages.",
-    angleText:
-      "This service is for designs that already have a visual direction and need careful implementation: section structure, spacing, typography, responsive behavior and a maintainable front-end handoff.",
-    includes: [
-      "Figma to HTML/CSS",
-      "Figma to React / Next.js",
-      "Figma to WordPress sections",
-      "Responsive implementation",
-      "Layout matching",
-      "Reusable page sections",
-      "Clean CSS structure",
-      "Front-end handoff notes",
-    ],
-    goodFit: [
-      "Designers who need development support",
-      "Landing page designs ready for implementation",
-      "Portfolio or business page builds",
-      "WordPress sections based on design files",
-      "React pages that need polished layout",
-    ],
-    approach: [
-      "Review the design file and page states",
-      "Define sections and responsive behavior",
-      "Build the layout with clean structure",
-      "Match spacing, typography and visual details",
-      "Prepare preview and handoff notes",
-    ],
-    examples: [
-      {
-        title: "React / Next.js Portfolio Website",
-        description:
-          "An implementation-led portfolio build with editorial layout, custom styling and responsive detail.",
-        status: "In progress",
-      },
-      {
-        title: "WordPress + ACF Custom Theme",
-        description:
-          "A planned path for turning a design into editable WordPress sections.",
-        status: "Planned",
-      },
-    ],
-    ctaTitle: "Have a design ready to become a working website?",
-    related: [
-      { label: "React / Next.js Developer", href: "/services/react-nextjs-developer" },
-      { label: "WordPress & ACF Developer", href: "/services/wordpress-acf-developer" },
+    ctaTitle: "Need your existing website to work better across devices?",
+    relatedServiceSlugs: [
+      "react-nextjs-developer",
+      "wordpress-acf-developer",
+      "woocommerce-developer",
     ],
   },
   {
     slug: "woocommerce-developer",
-    metaTitle: "WooCommerce Developer | Nicolae Mihai",
+    metaTitle: "WooCommerce Front-end Developer | Nicolae Mihai",
     metaDescription:
-      "WooCommerce product page styling, store layout improvements, responsive fixes and front-end polish for product browsing.",
-    theme: "peach",
-    variant: "timeline",
-    eyebrow: "WooCommerce Developer",
-    title: "WooCommerce Product Experiences",
+      "WooCommerce storefront improvements for product pages, store layouts, responsive behavior and clearer product browsing.",
+    eyebrow: "WooCommerce Development",
+    title: "WooCommerce Storefront Improvements",
     heroText:
-      "I improve WooCommerce product pages, store layouts and front-end flows so product browsing feels clearer, cleaner and easier to use.",
-    angleTitle: "Product presentation with practical WordPress structure.",
-    angleText:
-      "WooCommerce work here focuses on product pages, store layouts, cart and checkout presentation, responsive states and WordPress content structure around product browsing.",
+      "I improve WooCommerce storefront, product and category pages so customers can browse product information with a clearer hierarchy on every screen size.",
+    card: {
+      number: "07",
+      title: "WooCommerce Development",
+      description:
+        "Clearer storefront, product-page and responsive shopping experiences.",
+      imageSrc: "/images/services/woocommerce-storefront.png",
+      imageAlt: "",
+    },
+    heroOutcomes: [
+      "Clearer product hierarchy",
+      "Responsive store layouts",
+      "Focused purchase-path review",
+    ],
+    overviewTitle: "Product browsing should feel simple.",
+    overviewText:
+      "I focus on product presentation, navigation and responsive behavior while working within the store's existing WooCommerce theme and checkout architecture.",
     includes: [
-      "WooCommerce product page styling",
-      "Store layout improvements",
-      "Product card refinements",
-      "Cart and checkout front-end polish",
-      "Responsive WooCommerce fixes",
-      "CSS cleanup",
-      "Product-focused landing sections",
-      "WordPress/WooCommerce content structure",
+      "Product-page presentation improvements",
+      "Shop and category layout refinements",
+      "Product card and product-grid styling",
+      "Responsive storefront fixes",
+      "Cart and checkout review appropriate to the theme",
+      "ACF content integration where needed",
+      "CSS cleanup and component consistency",
+      "Front-end QA across the browsing path",
     ],
     goodFit: [
-      "WooCommerce stores that need better presentation",
-      "Product pages that need stronger layout",
-      "Stores with mobile layout issues",
-      "Brands that need cleaner product browsing",
-      "WordPress websites expanding into product sales",
+      "WooCommerce stores that need better product presentation",
+      "Product pages with weak visual hierarchy",
+      "Stores with mobile layout problems",
+      "Existing WordPress stores that need focused front-end improvements",
     ],
+    processIntro:
+      "The review follows how customers browse products, compare options and move toward the cart instead of treating every store page as the same layout.",
     approach: [
-      "Review product and store flow",
-      "Identify layout and usability problems",
-      "Improve product presentation",
-      "Refine cart/checkout front-end details",
-      "Test responsive states",
+      "Review the storefront, product pages and purchase path",
+      "Identify hierarchy, layout and interaction issues",
+      "Improve components within the existing store architecture",
+      "Test browsing, cart and responsive states",
     ],
     examples: [
       {
-        title: "WooCommerce Product Website",
+        label: "Representative scope",
+        isRepresentative: true,
+        ...serviceProjectPlaceholder,
+        title: "WooCommerce Storefront Improvement Scope",
         description:
-          "A planned WooCommerce-focused build around product presentation, browsing and front-end clarity.",
-        status: "Planned",
-      },
-      {
-        title: "WordPress + ACF Custom Theme",
-        description:
-          "A related WordPress direction for editable content structure and theme-level implementation.",
-        status: "Planned",
+          "A typical storefront scope: product presentation, store-listing layout and responsive refinements within an existing WooCommerce theme.",
       },
     ],
-    ctaTitle: "Need a cleaner WooCommerce product experience?",
-    related: [
-      { label: "WordPress & ACF Developer", href: "/services/wordpress-acf-developer" },
-      { label: "Responsive Improvements", href: "/services/responsive-website-fixes" },
+    ctaTitle: "Need a clearer WooCommerce product experience?",
+    relatedServiceSlugs: [
+      "wordpress-acf-developer",
+      "responsive-website-fixes",
+      "figma-to-website",
     ],
   },
 ];
-
-export const serviceSlugs = servicePages.map((service) => service.slug);
 
 export function getServicePage(slug: string) {
   return servicePages.find((service) => service.slug === slug);
 }
 
+export function getHomepageServices() {
+  return [...servicePages].sort(
+    (first, second) =>
+      Number(first.card.number) - Number(second.card.number),
+  );
+}
+
+export function getRelatedServices(service: ServicePageData) {
+  return service.relatedServiceSlugs.flatMap((slug) => {
+    const relatedService = getServicePage(slug);
+
+    return relatedService ? [relatedService] : [];
+  });
+}
+
 export const globalServiceCta = {
-  title: "Have a project that fits this direction?",
-  text: "Send me a short brief with what you need built, improved or structured. I can review the scope and suggest the right implementation path.",
+  text: "Send a short brief with the outcome, audience and constraints. I can review the scope and suggest a practical implementation path.",
   button: "Contact Me",
   email: siteInfo.email,
 };

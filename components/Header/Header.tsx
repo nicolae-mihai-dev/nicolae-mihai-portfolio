@@ -15,8 +15,10 @@ const navigation = [
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
   const lastScrollY = useRef(0);
   const [isHidden, setIsHidden] = useState(false);
+  const [hasScrollBorder, setHasScrollBorder] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -58,10 +60,13 @@ export function Header() {
 
       if (isMenuOpen || currentScrollY <= hideAfter) {
         setIsHidden(false);
+        setHasScrollBorder(false);
       } else if (scrollDelta > showThreshold) {
         setIsHidden(true);
+        setHasScrollBorder(false);
       } else if (scrollDelta < -showThreshold) {
         setIsHidden(false);
+        setHasScrollBorder(true);
       }
 
       lastScrollY.current = Math.max(currentScrollY, 0);
@@ -86,6 +91,7 @@ export function Header() {
     const closeMenu = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
+        requestAnimationFrame(() => menuToggleRef.current?.focus());
       }
     };
 
@@ -98,7 +104,13 @@ export function Header() {
 
   return (
     <header
-      className={`${styles.header} ${isHidden && !isMenuOpen ? styles.hidden : ""}`}
+      className={[
+        styles.header,
+        isHidden && !isMenuOpen ? styles.hidden : "",
+        hasScrollBorder && !isHidden ? styles.revealed : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       ref={headerRef}
     >
       <div className={`container ${styles.inner}`}>
@@ -126,6 +138,7 @@ export function Header() {
             setIsMenuOpen((open) => !open);
           }}
           type="button"
+          ref={menuToggleRef}
         >
           <span className={styles.menuIcon} aria-hidden="true">
             <span className={styles.menuLine} />

@@ -1,7 +1,7 @@
 .contact {
   position: relative;
   color: var(--color-heading);
-  background: var(--color-contact);
+  background: var(--color-brand-primary);
   scroll-margin-top: var(--scroll-offset);
 }
 
@@ -11,9 +11,9 @@
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(34rem, 0.82fr) minmax(58rem, 1.18fr);
+  grid-template-columns: minmax(30rem, 0.82fr) minmax(48rem, 1.18fr);
   align-items: center;
-  gap: clamp(7rem, 8vw, 13rem);
+  gap: clamp(5rem, 6vw, 10rem);
   padding-block: 9.5rem;
 }
 
@@ -30,15 +30,6 @@
 .label {
   display: inline-block;
   margin-bottom: 1.9rem;
-}
-
-.label::after {
-  display: block;
-  width: 3.6rem;
-  height: 0.2rem;
-  margin-top: 1.5rem;
-  background: currentColor;
-  content: "";
 }
 
 /* TITLE */
@@ -90,6 +81,11 @@
   gap: 0.7rem;
 }
 
+.directEmailLabel {
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+}
+
 .email {
   display: inline-flex;
   align-items: center;
@@ -102,15 +98,18 @@
 .email > span {
   color: var(--color-white);
   font-size: var(--text-lg);
-  transition: transform 160ms ease;
 }
 
 .email:hover {
-  color: var(--color-brand-orange-hover);
+  color: var(--color-white);
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 0.25em;
 }
 
-.email:hover > span {
-  transform: translate(0.2rem, -0.2rem);
+.email:focus-visible,
+.socialLink:focus-visible {
+  outline-color: var(--color-white);
 }
 
 /* =========================================================
@@ -162,6 +161,15 @@
   line-height: var(--line-height-body);
 }
 
+.turnstile {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.turnstile :global(iframe) {
+  max-width: 100%;
+}
+
 /* =========================================================
    FORM HEADER
 ========================================================= */
@@ -193,6 +201,7 @@
 
 .formEyebrow {
   color: var(--color-body);
+  font-weight: var(--font-weight-bold);
 }
 
 .formStatus {
@@ -213,7 +222,7 @@
 .formStatus > span {
   width: 0.8rem;
   height: 0.8rem;
-  background: var(--color-project-accent-two);
+  background: var(--color-brand-primary);
   border-radius: 50%;
 }
 
@@ -325,14 +334,14 @@
 .inputWrap:focus-within textarea {
   outline: 0;
   background: var(--color-white);
-  border-color: var(--color-brand-orange);
+  border-color: var(--color-brand-primary);
   box-shadow: 0 0 0 3px
-    color-mix(in srgb, var(--color-brand-orange) 9%, transparent);
+    color-mix(in srgb, var(--color-brand-primary) 9%, transparent);
 }
 
 .inputWrap:focus-within .inputIcon,
 .inputWrap:focus-within .textareaIcon {
-  color: var(--color-brand-orange);
+  color: var(--color-brand-primary);
 }
 
 /* =========================================================
@@ -442,6 +451,10 @@ a.socialLink:hover {
   color: var(--color-body);
 }
 
+.socialKicker {
+  display: block;
+}
+
 .socialContent strong {
   color: var(--color-heading);
 }
@@ -450,10 +463,9 @@ a.socialLink:hover {
    TABLET
 ========================================================= */
 
-@media (max-width: 105rem) {
+@media (max-width: 62rem) {
   .layout {
     grid-template-columns: 1fr;
-    gap: 6rem;
   }
 
   .heading {
@@ -471,13 +483,6 @@ a.socialLink:hover {
   .content {
     max-width: 86rem;
   }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 65rem) {
   .layout {
     gap: 4.5rem;
     padding-block: 8rem;
@@ -505,26 +510,6 @@ a.socialLink:hover {
     border-radius: 1.4rem;
   }
 
-  .formGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .fieldFull {
-    grid-column: auto;
-  }
-
-  .formFooter {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .formFooter button {
-    width: 100%;
-  }
-
-  .links {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* =========================================================
@@ -562,13 +547,33 @@ a.socialLink:hover {
   }
 
   .socialLink {
-    grid-template-columns: 4.6rem minmax(0, 1fr) auto;
+    grid-template-columns: 4.6rem minmax(0, 1fr);
     padding: 1.4rem;
   }
 
   .socialIcon {
     width: 4.6rem;
     height: 4.6rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .formGrid,
+  .links {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldFull {
+    grid-column: auto;
+  }
+
+  .formFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .formFooter button {
+    width: 100%;
   }
 }
 

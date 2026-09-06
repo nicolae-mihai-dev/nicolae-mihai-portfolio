@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -16,6 +16,8 @@ type ContactResponse = {
   error?: string;
   success?: boolean;
 };
+
+const CONTACT_REQUEST_TIMEOUT_MS = 12_000;
 
 async function readContactResponse(response: Response) {
   const contentType = response.headers.get("content-type") ?? "";
@@ -50,6 +52,9 @@ function SocialIcon({ label }: { label: string }) {
 export function Contact() {
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [formMessage, setFormMessage] = useState("");
+  const [turnstileSize, setTurnstileSize] = useState<
+    "compact" | "flexible"
+  >("flexible");
 
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const submissionInFlightRef = useRef(false);
@@ -57,6 +62,29 @@ export function Contact() {
   const emailHref = `mailto:${siteInfo.email}`;
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const isSubmitting = formStatus === "submitting";
+
+  useEffect(() => {
+    const compactViewport = window.matchMedia("(max-width: 36rem)");
+    const updateTurnstileSize = () => {
+      setTurnstileSize(compactViewport.matches ? "compact" : "flexible");
+    };
+
+    updateTurnstileSize();
+    compactViewport.addEventListener("change", updateTurnstileSize);
+
+    return () => {
+      compactViewport.removeEventListener("change", updateTurnstileSize);
+    };
+  }, []);
+
+  function clearCompletedFormState() {
+    if (submissionInFlightRef.current || formStatus === "idle") {
+      return;
+    }
+
+    setFormStatus("idle");
+    setFormMessage("");
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -95,13 +123,26 @@ export function Contact() {
     setFormMessage("Sending your message...");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(
+        () => controller.abort(),
+        CONTACT_REQUEST_TIMEOUT_MS,
+      );
+
+      let response: Response;
+
+      try {
+        response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
 
       if (response.status === 429) {
         throw new Error(
@@ -127,9 +168,11 @@ export function Contact() {
 
       setFormStatus("error");
       setFormMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.",
+        error instanceof Error && error.name === "AbortError"
+          ? "The request timed out. Please try again."
+          : error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
       );
     } finally {
       submissionInFlightRef.current = false;
@@ -137,15 +180,17 @@ export function Contact() {
   }
 
   return (
-    <section className={styles.contact} id="contact">
+    <section className={styles.contact} aria-labelledby="contact-title" id="contact">
       <div className={`container ${styles.layout}`}>
         {/* LEFT */}
         <div className={styles.heading}>
-          <span className={`${styles.label} type-label type-label--inverse`}>
+          <span
+            className={`${styles.label} type-label type-label--inverse type-label--ruled`}
+          >
             Contact
           </span>
 
-          <h2 className="type-section-title type-section-title--inverse">
+          <h2 className="type-section-title type-section-title--inverse" id="contact-title">
             Have a product,
             <br />
             platform or web
@@ -166,7 +211,7 @@ export function Contact() {
             </span>
 
             <div className={styles.emailContent}>
-              <span className="type-label type-label--inverse">
+              <span className={`${styles.directEmailLabel} type-kicker`}>
                 Direct email
               </span>
 
@@ -184,7 +229,9 @@ export function Contact() {
         {/* RIGHT */}
         <div className={styles.content}>
           <form
+            aria-labelledby="contact-form-title"
             className={styles.form}
+            onInput={clearCompletedFormState}
             onSubmit={handleSubmit}
             aria-busy={isSubmitting}
           >
@@ -209,7 +256,10 @@ export function Contact() {
                   <FiSend />
                 </span>
 
-                <span className={`${styles.formEyebrow} type-label`}>
+                <span
+                  className={`${styles.formEyebrow} type-kicker`}
+                  id="contact-form-title"
+                >
                   Project inquiry
                 </span>
               </div>
@@ -269,7 +319,7 @@ export function Contact() {
                   What can I help with?
                 </label>
 
-                <div className={`${styles.inputWrap} ${styles.textareaWrap}`}>
+                <div className={styles.inputWrap}>
                   <FiEdit3 className={styles.textareaIcon} aria-hidden="true" />
 
                   <textarea
@@ -286,27 +336,44 @@ export function Contact() {
             </div>
 
             {turnstileSiteKey ? (
-              <Turnstile
-                ref={turnstileRef}
-                onError={() => {
-                  if (!submissionInFlightRef.current) {
-                    setFormStatus("error");
-                    setFormMessage(
-                      "Security verification is temporarily unavailable.",
-                    );
-                  }
-                }}
-                onExpire={() => {
-                  if (!submissionInFlightRef.current) {
-                    setFormStatus("error");
-                    setFormMessage(
-                      "Security verification expired. Please try again.",
-                    );
-                  }
-                }}
-                options={{ refreshExpired: "auto", refreshTimeout: "auto" }}
-                siteKey={turnstileSiteKey}
-              />
+              <div className={styles.turnstile}>
+                <Turnstile
+                  key={turnstileSize}
+                  ref={turnstileRef}
+                  onError={() => {
+                    if (!submissionInFlightRef.current) {
+                      setFormStatus("error");
+                      setFormMessage(
+                        "Security verification is temporarily unavailable.",
+                      );
+                    }
+                  }}
+                  onExpire={() => {
+                    if (!submissionInFlightRef.current) {
+                      setFormStatus("error");
+                      setFormMessage(
+                        "Security verification expired. Please try again.",
+                      );
+                    }
+                  }}
+                  onSuccess={() => {
+                    if (
+                      !submissionInFlightRef.current &&
+                      formStatus === "error" &&
+                      formMessage.startsWith("Security verification")
+                    ) {
+                      setFormStatus("idle");
+                      setFormMessage("");
+                    }
+                  }}
+                  options={{
+                    refreshExpired: "auto",
+                    refreshTimeout: "auto",
+                    size: turnstileSize,
+                  }}
+                  siteKey={turnstileSiteKey}
+                />
+              </div>
             ) : (
               <p className={styles.securityNotice} role="alert">
                 Security verification is temporarily unavailable.
@@ -319,13 +386,14 @@ export function Contact() {
 
                 <p aria-live="polite">
                   {formMessage ||
-                    "Your details are sent securely and never shared."}
+                    "Your message is processed so I can respond to your inquiry."}
                 </p>
               </div>
 
               <Button
                 disabled={isSubmitting || !turnstileSiteKey}
                 type="submit"
+                variant="warm"
               >
                 {isSubmitting ? "Sending..." : "Send inquiry"}
               </Button>
@@ -347,7 +415,9 @@ export function Contact() {
                   </span>
 
                   <span className={styles.socialContent}>
-                    <small className="type-label">Connect on</small>
+                    <small className={`${styles.socialKicker} type-tag`}>
+                      Connect on
+                    </small>
                     <strong className="type-ui-strong">{link.label}</strong>
                   </span>
                 </a>
@@ -358,7 +428,9 @@ export function Contact() {
                   </span>
 
                   <span className={styles.socialContent}>
-                    <small className="type-label">Connect on</small>
+                    <small className={`${styles.socialKicker} type-tag`}>
+                      Connect on
+                    </small>
                     <strong className="type-ui-strong">{link.label}</strong>
                   </span>
                 </span>
