@@ -142,16 +142,17 @@
 }
 
 .briefGrid h2 {
+  max-width: 115rem;
   margin-inline: auto;
 }
 
 .briefCopy {
-  max-width: 62rem;
+  max-width: 115rem;
   margin: 3.2rem auto 0;
 }
 
 .briefPoint {
-  max-width: 68rem;
+  max-width: 88rem;
   margin: clamp(4rem, 6vw, 6.4rem) auto 0;
   padding: clamp(3.2rem, 4vw, 4.8rem);
   color: var(--color-brand-primary);
@@ -170,6 +171,15 @@
 
 .decisions {
   background: var(--color-white);
+}
+
+.decisionsInner > :global(.type-label),
+.decisionsInner > h2 {
+  text-align: center;
+}
+
+.decisionsInner > h2 {
+  margin-inline: auto;
 }
 
 .evidence {
@@ -262,7 +272,8 @@
 }
 
 .decisionList {
-  margin: clamp(4.8rem, 7vw, 7.2rem) 0 0;
+  max-width: 87rem;
+  margin: clamp(4.8rem, 7vw, 7.2rem) auto 0;
   padding: 0;
   list-style: none;
 }

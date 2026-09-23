@@ -140,6 +140,10 @@ export const caseStudies = [
     heroImageLayout: "portrait",
     projectLinks: [
       {
+        label: "Visit live site",
+        href: "https://alder-stone.netlify.app/",
+      },
+      {
         label: "View source on GitHub",
         href: "https://github.com/nicolae-mihai-dev/alder-stone",
       },

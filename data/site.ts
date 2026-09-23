@@ -66,11 +66,12 @@ export const projects: Project[] = [
     status: "Planned",
   },
   {
-    title: "Alder & Stone",
+    title: "Alder & Stone — WordPress + ACF",
     description:
-      "A custom WordPress website for an architecture and construction studio, built around editable project content, a clear editorial system and a performance-conscious front end.",
+      "A custom WordPress + ACF website for an architecture and construction studio, built around editable project content, a clear editorial system and a performance-conscious front end.",
     tags: ["WordPress", "ACF", "PHP", "SCSS"],
     links: [
+      { label: "Live site", href: "https://alder-stone.netlify.app/" },
       {
         label: "GitHub",
         href: "https://github.com/nicolae-mihai-dev/alder-stone",

@@ -114,7 +114,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
 
       <section className={styles.decisions} aria-labelledby="decisions-title">
         <div className={"container " + styles.decisionsInner}>
-          <p className="type-label type-label--accent type-label--ruled">
+          <p className="type-label type-label--accent type-label--ruled type-label--centered">
             Key decisions
           </p>
 

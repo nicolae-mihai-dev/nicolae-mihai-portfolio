@@ -240,6 +240,7 @@ export function ServicePage({ service }: ServicePageProps) {
                         src={example.imageSrc}
                         alt={example.imageAlt ?? example.title}
                         fill
+                        quality={90}
                         sizes="(max-width: 62rem) 100vw, 38vw"
                         className={styles.exampleImage}
                       />
@@ -293,25 +294,19 @@ export function ServicePage({ service }: ServicePageProps) {
         <div className={`container ${styles.ctaInner}`}>
           <div className={styles.ctaCard}>
             <div className={styles.ctaContent}>
-              <p
-                className={`${styles.ctaLabel} type-label type-label--accent`}
-              >
-                Start a project
-              </p>
+              <div className={styles.ctaCopy}>
+                <p
+                  className={`${styles.ctaLabel} type-label type-label--accent`}
+                >
+                  Start a project
+                </p>
 
-              <h2 id="cta-title">{service.ctaTitle}</h2>
+                <h2 id="cta-title">{service.ctaTitle}</h2>
 
-              <p className="type-section-copy">{globalServiceCta.text}</p>
+                <p className="type-section-copy">{globalServiceCta.text}</p>
+              </div>
 
               <div className={styles.ctaActions}>
-                <a
-                  className={`${styles.email} type-ui-strong`}
-                  href={`mailto:${globalServiceCta.email}`}
-                >
-                  <Mail aria-hidden="true" />
-                  {globalServiceCta.email}
-                </a>
-
                 <Button
                   className={styles.ctaButton}
                   href={`mailto:${globalServiceCta.email}`}
@@ -321,6 +316,14 @@ export function ServicePage({ service }: ServicePageProps) {
                   {globalServiceCta.button}
                   <ArrowRight aria-hidden="true" />
                 </Button>
+
+                <a
+                  className={`${styles.email} type-ui-strong`}
+                  href={`mailto:${globalServiceCta.email}`}
+                >
+                  <Mail aria-hidden="true" />
+                  {globalServiceCta.email}
+                </a>
               </div>
             </div>
           </div>
@@ -349,6 +352,7 @@ export function ServicePage({ service }: ServicePageProps) {
                         alt={relatedService.card.imageAlt}
                         className={styles.relatedImage}
                         fill
+                        quality={90}
                         sizes="(max-width: 62rem) 100vw, (max-width: 76rem) 50vw, 33vw"
                         src={relatedService.card.imageSrc}
                       />

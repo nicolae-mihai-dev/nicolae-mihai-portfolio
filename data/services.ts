@@ -17,7 +17,7 @@ export type ServiceCard = {
   title: string;
   description: string;
   imageSrc: string;
-  imageAlt: "";
+  imageAlt: string;
 };
 
 export type ServiceExample = {
@@ -265,8 +265,9 @@ export const servicePages: ServicePageData[] = [
       title: "WordPress & ACF Development",
       description:
         "Editable content structures with a controlled responsive front end.",
-      imageSrc: "/images/services/wordpress-acf-development.png",
-      imageAlt: "",
+      imageSrc: "/images/work/alder-stone/alder-stone-acf-editor.png",
+      imageAlt:
+        "WordPress editor showing editable fields for the Courtyard Residence project.",
     },
     heroOutcomes: [
       "Structured content editing",
@@ -302,12 +303,14 @@ export const servicePages: ServicePageData[] = [
     ],
     examples: [
       {
-        label: "Representative scope",
-        isRepresentative: true,
-        ...serviceProjectPlaceholder,
-        title: "Editable WordPress & ACF Build",
+        label: "Client build",
+        title: "Alder & Stone — WordPress + ACF Custom Theme",
         description:
-          "A typical WordPress and ACF scope: structured fields, editable sections and responsive front-end implementation that protects the original page system.",
+          "A custom WordPress child theme for an architecture studio, with ACF fields that make project details, services and editorial sections practical to update without exposing layout controls.",
+        caseStudyHref: "/work/alder-stone",
+        imageSrc: "/images/work/alder-stone/alder-stone-acf-editor.png",
+        imageAlt:
+          "WordPress editor showing editable fields for the Courtyard Residence project.",
       },
     ],
     ctaTitle: "Need a WordPress build that stays easy to edit?",

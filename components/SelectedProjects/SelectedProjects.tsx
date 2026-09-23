@@ -1,8 +1,6 @@
 import { projects } from "@/data/site";
 import styles from "./SelectedProjects.module.css";
 
-const showPlannedResources = true;
-
 function ProjectLinks({
   links,
   projectTitle,
@@ -10,15 +8,17 @@ function ProjectLinks({
   links: (typeof projects)[number]["links"];
   projectTitle: string;
 }) {
-  const hasAvailableLinks = links.some((link) => link.href);
+  const availableLinks = links.filter(
+    (link): link is (typeof links)[number] & { href: string } => Boolean(link.href),
+  );
 
-  if (!hasAvailableLinks && !showPlannedResources) {
+  if (availableLinks.length === 0) {
     return null;
   }
 
   return (
     <ul className={styles.projectLinks} aria-label={`${projectTitle} resources`}>
-      {links.map((link) => {
+      {availableLinks.map((link) => {
         const content = (
           <>
             <span>{link.label}</span>
@@ -27,23 +27,6 @@ function ProjectLinks({
             </span>
           </>
         );
-
-        if (!link.href) {
-          if (!showPlannedResources) {
-            return null;
-          }
-
-          return (
-            <li key={link.label}>
-              <span
-                aria-label={`${link.label} — link coming soon`}
-                className={`${styles.projectLink} type-action`}
-              >
-                {content}
-              </span>
-            </li>
-          );
-        }
 
         const isExternal = link.href.startsWith("http");
 

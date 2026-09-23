@@ -503,9 +503,21 @@
 }
 
 .ctaContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(3.2rem, 7vw, 9.6rem);
   min-width: 0;
-  margin-inline: auto;
   padding: clamp(3.2rem, 4vw, 5.2rem);
+}
+
+.ctaCopy {
+  min-width: 0;
+}
+
+.ctaCopy h2,
+.ctaCopy > p:not(.ctaLabel) {
+  max-width: 55rem;
 }
 
 .ctaLabel {
@@ -525,10 +537,10 @@
 
 .ctaActions {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.8rem 3rem;
-  margin-top: 3.2rem;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0;
 }
 
 .email {
@@ -794,6 +806,7 @@
   }
 
   .ctaContent {
+    grid-template-columns: 1fr;
     padding: 3.2rem;
   }
 
