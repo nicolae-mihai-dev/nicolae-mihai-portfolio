@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Button } from "@/components/Button/Button";
 import type { CaseStudyData } from "@/data/caseStudies";
 import { siteInfo } from "@/data/site";
@@ -14,7 +14,15 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
     <main className={styles.page} id="main-content" tabIndex={-1}>
       <section className={styles.hero} id="top">
         <div className={"container " + styles.heroInner}>
-          <div className={styles.heroGrid}>
+          <div
+            className={`${styles.heroGrid} ${
+              caseStudy.imageSrc ? "" : styles.heroGridWithoutVisual
+            } ${
+              caseStudy.heroImageLayout === "portrait"
+                ? styles.heroGridPortrait
+                : ""
+            }`}
+          >
             <div className={styles.heroCopy}>
               <p className="type-label type-label--accent type-label--ruled">
                 {caseStudy.eyebrow}
@@ -26,6 +34,23 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
                 {caseStudy.summary}
               </p>
 
+              {caseStudy.projectLinks.length > 0 && (
+                <div className={styles.heroActions}>
+                  {caseStudy.projectLinks.map((link) => (
+                    <Button
+                      href={link.href}
+                      key={link.href}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      variant="secondary"
+                    >
+                      {link.label}
+                      <ArrowUpRight aria-hidden="true" />
+                    </Button>
+                  ))}
+                </div>
+              )}
+
               <dl className={styles.facts}>
                 {caseStudy.facts.map((fact) => (
                   <div key={fact.label}>
@@ -36,28 +61,41 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
               </dl>
             </div>
 
-            <figure className={styles.heroVisual}>
-              <div className={styles.imageFrame}>
-                <Image
-                  alt={caseStudy.imageAlt}
+            {caseStudy.imageSrc && caseStudy.imageAlt && (
+              <figure
+                className={`${styles.heroVisual} ${
+                  caseStudy.heroImageLayout === "portrait"
+                    ? styles.heroVisualPortrait
+                    : ""
+                }`}
+              >
+                <div className={styles.imageFrame}>
+                  <Image
+                    alt={caseStudy.imageAlt}
                   className={styles.image}
                   fill
                   priority
-                  sizes="(max-width: 62rem) 100vw, 48vw"
+                  quality={90}
+                  sizes={
+                    caseStudy.heroImageLayout === "portrait"
+                      ? "(max-width: 62rem) 100vw, 418px"
+                      : "(max-width: 62rem) 100vw, 1440px"
+                  }
                   src={caseStudy.imageSrc}
-                />
-              </div>
-              <figcaption>
-                A responsive, component-led portfolio system.
-              </figcaption>
-            </figure>
+                  />
+                </div>
+                {caseStudy.imageCaption && (
+                  <figcaption>{caseStudy.imageCaption}</figcaption>
+                )}
+              </figure>
+            )}
           </div>
         </div>
       </section>
 
       <section className={styles.brief} aria-labelledby="brief-title">
         <div className={"container " + styles.briefInner}>
-          <p className="type-label type-label--accent type-label--ruled">
+          <p className="type-label type-label--accent type-label--ruled type-label--centered">
             The brief
           </p>
 
@@ -68,9 +106,9 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
                 {caseStudy.brief}
               </p>
             </div>
-
-            <p className={styles.briefPoint}>{caseStudy.briefPoint}</p>
           </div>
+
+          <p className={styles.briefPoint}>{caseStudy.briefPoint}</p>
         </div>
       </section>
 
@@ -81,7 +119,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
           </p>
 
           <h2 id="decisions-title">
-            Build a portfolio that is useful before it is decorative.
+            {caseStudy.decisionsTitle}
           </h2>
 
           <ol className={styles.decisionList}>
@@ -100,14 +138,72 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
         </div>
       </section>
 
+      {caseStudy.evidence && caseStudy.evidenceTitle && (
+        <section className={styles.evidence} aria-labelledby="evidence-title">
+          <div className={"container " + styles.evidenceInner}>
+            <p className="type-label type-label--accent type-label--ruled">
+              Selected screens
+            </p>
+
+            <h2 id="evidence-title">{caseStudy.evidenceTitle}</h2>
+
+            <div className={styles.evidenceGrid}>
+              {caseStudy.evidence.map((item) => (
+                <figure
+                  className={`${styles.evidenceCard} ${
+                    item.layout === "half" ? styles.evidenceCardHalf : ""
+                  }`}
+                  key={item.title}
+                >
+                  <a
+                    aria-label={`Open ${item.title} at full size`}
+                    className={styles.evidenceMedia}
+                    href={item.imageSrc}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <Image
+                      alt={item.imageAlt}
+                      className={styles.image}
+                      height={item.imageHeight}
+                      quality={90}
+                      sizes={
+                        item.layout === "half"
+                          ? "(max-width: 62rem) 100vw, 50vw"
+                          : "(max-width: 62rem) 100vw, 1440px"
+                      }
+                      src={item.imageSrc}
+                      width={item.imageWidth}
+                    />
+                  </a>
+                  <figcaption>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <a
+                      className={styles.evidenceOpen}
+                      href={item.imageSrc}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Open full-size image
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className={styles.outcomes} aria-labelledby="outcomes-title">
         <div className={"container " + styles.outcomesInner}>
-          <p className="type-label type-label--accent type-label--ruled">
+          <p className="type-label type-label--accent type-label--ruled type-label--centered">
             What was built
           </p>
 
           <h2 id="outcomes-title">
-            A clear system for presenting work and starting conversations.
+            {caseStudy.outcomesTitle}
           </h2>
 
           <div className={styles.outcomeGrid}>

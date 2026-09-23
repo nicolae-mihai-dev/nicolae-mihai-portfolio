@@ -66,12 +66,18 @@ export const projects: Project[] = [
     status: "Planned",
   },
   {
-    title: "WordPress + ACF Custom Theme",
+    title: "Alder & Stone",
     description:
-      "A WordPress implementation with flexible content sections, editable fields and a structure designed for non-technical content updates.",
-    tags: ["WordPress", "ACF", "PHP", "Custom Theme"],
-    links: [{ label: "Preview" }, { label: "GitHub" }, { label: "Case Study" }],
-    status: "Planned",
+      "A custom WordPress website for an architecture and construction studio, built around editable project content, a clear editorial system and a performance-conscious front end.",
+    tags: ["WordPress", "ACF", "PHP", "SCSS"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/nicolae-mihai-dev/alder-stone",
+      },
+      { label: "Case Study", href: "/work/alder-stone" },
+    ],
+    status: "Live",
   },
   {
     title: "WooCommerce Product Website",

@@ -17,14 +17,33 @@
   gap: clamp(5rem, 8vw, 12rem);
 }
 
+.heroGridWithoutVisual {
+  grid-template-columns: minmax(0, 86rem);
+}
+
+.heroGridPortrait {
+  grid-template-columns: minmax(0, 1fr) minmax(24rem, 0.48fr);
+}
+
 .heroCopy h1 {
-  max-width: 11ch;
   margin-top: 2.4rem;
 }
 
 .heroSummary {
   max-width: 60rem;
   margin-top: 2.8rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin-top: 3.2rem;
+}
+
+.heroActions svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .facts {
@@ -83,6 +102,19 @@
   line-height: var(--line-height-body);
 }
 
+.heroVisualPortrait {
+  width: min(100%, 36rem);
+  justify-self: end;
+}
+
+.heroVisualPortrait .imageFrame {
+  aspect-ratio: 418 / 745;
+}
+
+.heroVisualPortrait .image {
+  object-fit: contain;
+}
+
 .brief {
   background: var(--color-section);
 }
@@ -95,23 +127,32 @@
 
 .briefGrid {
   display: block;
+  text-align: center;
+}
+
+.briefInner > :global(.type-label) {
+  text-align: center;
 }
 
 .briefGrid h2,
 .decisionsInner > h2,
 .outcomesInner > h2 {
-  max-width: 17ch;
+  max-width: 87rem;
   margin-top: 2.4rem;
+}
+
+.briefGrid h2 {
+  margin-inline: auto;
 }
 
 .briefCopy {
   max-width: 62rem;
-  margin-top: 3.2rem;
+  margin: 3.2rem auto 0;
 }
 
 .briefPoint {
   max-width: 68rem;
-  margin: clamp(4rem, 6vw, 6.4rem) 0 0;
+  margin: clamp(4rem, 6vw, 6.4rem) auto 0;
   padding: clamp(3.2rem, 4vw, 4.8rem);
   color: var(--color-brand-primary);
   background: color-mix(
@@ -124,10 +165,100 @@
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-body);
+  text-align: center;
 }
 
 .decisions {
   background: var(--color-white);
+}
+
+.evidence {
+  background: var(--color-section);
+}
+
+.evidenceInner {
+  padding-block: var(--section-pad-95);
+}
+
+.evidenceInner > h2 {
+  max-width: 87rem;
+  margin-top: 2.4rem;
+}
+
+.evidenceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(4.8rem, 7vw, 7.2rem);
+  margin-top: clamp(4.8rem, 7vw, 7.2rem);
+}
+
+.evidenceCard {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+}
+
+.evidenceCard:not(.evidenceCardHalf) {
+  grid-column: 1 / -1;
+}
+
+.evidenceCardHalf {
+  align-self: start;
+}
+
+.evidenceMedia {
+  display: block;
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.evidenceCard .image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.evidenceCard figcaption {
+  padding: clamp(2.4rem, 4vw, 3.6rem);
+}
+
+.evidenceCard h3 {
+  margin: 0;
+  font-size: var(--heading-sm);
+  text-transform: none;
+}
+
+.evidenceCard p {
+  margin: 1.4rem 0 0;
+  color: var(--color-body);
+  font-size: var(--text-md);
+  line-height: var(--line-height-body);
+}
+
+.evidenceOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 2.4rem;
+  color: var(--color-brand-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
+  text-decoration: none;
+}
+
+.evidenceOpen:hover {
+  color: var(--color-heading);
+}
+
+.evidenceOpen svg {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .decisionList {
@@ -169,6 +300,15 @@
 
 .outcomes {
   background: var(--color-section);
+}
+
+.outcomesInner > h2 {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.outcomesInner > p {
+  text-align: center;
 }
 
 .outcomeGrid {
@@ -266,7 +406,7 @@
 }
 
 .ctaCard h2 {
-  max-width: 20ch;
+  max-width: 69rem;
   margin-top: 2.4rem;
   color: var(--color-white);
 }
@@ -300,9 +440,15 @@
     width: min(100%, 78rem);
   }
 
+  .heroVisualPortrait {
+    width: min(100%, 32rem);
+    justify-self: start;
+  }
+
   .heroInner,
   .briefInner,
   .decisionsInner,
+  .evidenceInner,
   .outcomesInner,
   .ctaInner {
     padding-block: var(--section-pad-mobile);
@@ -320,6 +466,14 @@
   .outcomeGrid {
     grid-template-columns: 1fr;
     gap: 2.4rem;
+  }
+
+  .evidenceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .evidenceCard:not(.evidenceCardHalf) {
+    grid-column: auto;
   }
 
   .ctaCard {
@@ -341,10 +495,6 @@
 }
 
 @media (max-width: 42rem) {
-  .heroCopy h1 {
-    max-width: 13ch;
-  }
-
   .deliverableCard,
   .qualityCard {
     padding: 3.2rem 2.4rem;
